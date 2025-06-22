@@ -1,0 +1,116 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+/* 整體背景與排版 */
+body {
+  background: #fffdfb;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#add-to-cart-btn {
+  margin-top: 10px;
+  background-color: #d2995a; /* 按鈕色 */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#add-to-cart-btn:hover {
+  background-color: #a55b1c;
+}
+
+/* 通知訊息 */
+.notification {
+  background-color: #fff3e0;
+  color: #b06e3d;
+  padding: 10px 20px;
+  border-left: 5px solid #e8b885;
+  border-radius: 6px;
+  margin: 20px 0;
+  max-width: 800px;
+  display: none;
+  font-size: 0.95rem;
+}
+
+/* 商品詳細內容容器 */
+#product-detail {
+  background-color: #ffffff;
+  border: 1px solid #f0e0cf;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 商品圖片 */
+#product-detail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* 商品標題 */
+#product-detail h2 {
+  font-size: 1.6rem;
+  color: #5c3c1e;
+  margin-bottom: 12px;
+}
+
+/* 商品描述 */
+#product-detail p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* 重要資訊強調 */
+#product-detail .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #a55b1c;
+  margin-bottom: 10px;
+}
+#product-detail .stock {
+  font-weight: 600;
+  color: #7a4e2e;
+  margin-bottom: 15px;
+}
+
+/* 返回按鈕 */
+.back-btn {
+  margin-top: 40px;
+  padding: 10px 30px;
+  background-color: #eb9d57;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(235, 157, 87, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.back-btn:hover {
+  background-color: #c9782f;
+  transform: translateY(-2px);
+}

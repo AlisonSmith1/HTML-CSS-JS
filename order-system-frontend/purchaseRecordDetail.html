@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>訂單詳情</title>
+    <style>
+      * {
+        color: #3b2f2f;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f5f1;
+        color: #3b2f2f;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+      }
+
+      #order-info {
+        background-color: #fffaf5;
+        color: #5c3c1e;
+        border-radius: 12px;
+        padding: 20px 30px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(235, 157, 87, 0.4);
+        line-height: 1.6;
+      }
+
+      #order-info p {
+        margin: 10px 0;
+      }
+
+      /* 返回按鈕 */
+      .back-btn {
+        margin-top: 30px;
+        padding: 10px 30px;
+        background-color: #eb9d57;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(235, 157, 87, 0.4);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      .back-btn:hover {
+        background-color: #c9782f;
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>紀錄詳情</h1>
+    <div id="order-info"></div>
+
+    <a href="index.html" class="back-btn">回商品列表</a>
+    <script src="purchaseRecordDetailScript.js"></script>
+  </body>
+</html>

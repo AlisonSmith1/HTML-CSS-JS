@@ -1,0 +1,118 @@
+/* 全局設定 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  position: relative;
+  z-index: 1;
+}
+
+section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#intro1,
+#intro2,
+#intro3 {
+  background: transparent; /*只影響背景*/
+}
+
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: rgba(0, 168, 204, 0.15);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+.bubble:nth-child(1) {
+  width: 40px;
+  height: 40px;
+  left: 10%;
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+.bubble:nth-child(2) {
+  width: 20px;
+  height: 20px;
+  left: 25%;
+  animation-duration: 8s;
+  animation-delay: 3s;
+}
+.bubble:nth-child(3) {
+  width: 30px;
+  height: 30px;
+  left: 40%;
+  animation-duration: 15s;
+  animation-delay: 5s;
+}
+.bubble:nth-child(4) {
+  width: 25px;
+  height: 25px;
+  left: 60%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+.bubble:nth-child(5) {
+  width: 50px;
+  height: 50px;
+  left: 75%;
+  animation-duration: 18s;
+  animation-delay: 7s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* 按鈕樣式 */
+#enterBtn {
+  position: absolute;
+  margin-top: 130px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #00a8cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#enterBtn:hover {
+  background-color: #007a99;
+}

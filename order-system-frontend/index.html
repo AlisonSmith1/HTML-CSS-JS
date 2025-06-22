@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品列表</title>
+    <link rel="stylesheet" href="indexStyle.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div id="header-left">
+        <a id="my-products-link" href="#"> 我的商品 </a>
+        <a id="add-product-link" href="#"> 新增商品 </a>
+      </div>
+      <div id="hamburger">☰</div>
+      <div id="header-right" class="menu">
+        <input type="text" id="search-input" placeholder="請輸入關鍵字" />
+        <button id="search-btn">搜尋</button>
+        <ul id="search-results"></ul>
+        <a href="./purchaseRecord.html">購買紀錄</a>
+        <a href="/order-system-frontend/register.html">註冊</a>
+        <a href="/order-system-frontend/login.html">登入</a>
+        <a href="#" id="logout-link">登出</a>
+      </div>
+    </div>
+    <div id="notification" class="notification" style="display: none"></div>
+    <button id="view-cart-btn">查看購物車</button>
+    <div id="product-list" class="product-container"></div>
+
+    <script src="indexScript.js"></script>
+  </body>
+</html>

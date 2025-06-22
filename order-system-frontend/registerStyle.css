@@ -1,0 +1,86 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fffaf5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h1 {
+  color: #5a4e4d;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(165, 91, 28, 0.08);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  color: #5a4e4d;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1.5px solid #d8a76f;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #d2995a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a55b1c;
+}
+
+#error-message {
+  margin-top: 15px;
+  color: red;
+  text-align: center;
+}
+
+.message {
+  margin-top: 10px;
+  color: green;
+  text-align: center;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #4e2f1e;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

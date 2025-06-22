@@ -1,0 +1,161 @@
+/* Reset & 基本設定 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3b2f2f;
+}
+
+body {
+  background-color: #fffaf5;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  background-color: #f0d9b5;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(171, 122, 95, 0.3);
+}
+
+#header-left {
+  color: #a55b1c;
+  font-weight: 600;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+#header-right a {
+  color: #a55b1c;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  text-decoration: none;
+}
+
+#header-right a:hover {
+  color: #7f4300;
+}
+
+/* 頁面標題 */
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #5a3e2b;
+}
+
+/* 通知樣式 */
+.notification {
+  background-color: #fff3e0;
+  color: #a55b1c;
+  padding: 12px 20px;
+  border-left: 5px solid #e8b885;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  display: none;
+  font-weight: 600;
+}
+
+/* 商品卡片容器 */
+#product-list {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* 商品卡片 */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1.5px solid #ecd9c6;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #fffaf5;
+  box-shadow: 0 4px 8px rgba(165, 91, 28, 0.05);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* 商品圖片 */
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* 商品資訊區塊 */
+.card .info h2 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  color: #5c3c1e;
+}
+.card .info p {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  color: #5a4e4d;
+}
+
+/* 編輯、刪除按鈕 */
+.edit-btn,
+.delete-btn {
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.edit-btn {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+.edit-btn:hover {
+  background-color: #d98c26;
+}
+.delete-btn {
+  background-color: #e46f61;
+  color: #fff;
+}
+.delete-btn:hover {
+  background-color: #c44739;
+}
+
+/* 回首頁按鈕 */
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: #eb9d57;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(235, 157, 87, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.back-btn:hover {
+  background-color: #c9782f;
+  transform: translateY(-2px);
+}

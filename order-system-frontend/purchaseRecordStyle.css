@@ -1,0 +1,83 @@
+* {
+  color: #3b2f2f;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+
+  color: #3b2f2f;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fffaf5;
+}
+
+h1 {
+  color: #5c4436;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#search-input {
+  padding: 10px;
+  width: 300px;
+  max-width: 80%;
+  border: 2px solid #d8a76f;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#search-btn {
+  padding: 7px 16px;
+  background-color: #a55b1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(165, 91, 28, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background-color: #7f4300;
+}
+
+#orders-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+#orders-list li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 6px rgba(165, 91, 28, 0.6);
+}
+
+/* 回首頁按鈕 */
+.back-btn {
+  margin-top: 30px;
+  padding: 10px 30px;
+  background-color: #eb9d57;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(235, 157, 87, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.back-btn:hover {
+  background-color: #c9782f;
+  transform: translateY(-2px);
+}

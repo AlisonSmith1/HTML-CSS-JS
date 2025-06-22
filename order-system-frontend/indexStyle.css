@@ -1,0 +1,239 @@
+* {
+  color: #3b2f2f;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f7f7f7;
+  color: #3b2f2f;
+  background-color: #f9f5f1;
+}
+
+#hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  background-color: #f0d9b5;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(171, 122, 95, 0.3);
+}
+
+/* 左側連結區 */
+#header-left a {
+  color: #a55b1c;
+  font-weight: 600;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+#header-left a:hover {
+  color: #7f4300;
+}
+
+/* 右側搜尋與連結 */
+#header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* header 右側選單 */
+#header-right.menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 搜尋輸入框 */
+#search-input {
+  padding: 6px 12px;
+  border: 2px solid #d8a76f;
+  border-radius: 6px;
+  width: 180px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+#search-input:focus {
+  border-color: #a55b1c;
+  outline: none;
+}
+
+/* 搜尋按鈕 */
+#search-btn {
+  padding: 7px 16px;
+  background-color: #a55b1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(165, 91, 28, 0.6);
+  transition: background-color 0.3s ease;
+}
+#search-btn:hover {
+  background-color: #7f4300;
+}
+
+/* 右側註冊登入登出連結 */
+#header-right a {
+  color: #a55b1c;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 12px;
+  transition: color 0.3s ease;
+}
+#header-right a:hover {
+  color: #7f4300;
+}
+
+/* 查看購物車按鈕 */
+#view-cart-btn {
+  background-color: #d2995a;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(210, 153, 90, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+#view-cart-btn:hover {
+  background-color: #a55b1c;
+  box-shadow: 0 6px 15px rgba(165, 91, 28, 0.7);
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+#product-list {
+  display: flex;
+  flex-wrap: wrap; /* 換行 */
+  gap: 20px; /* 卡片之間的間距 */
+  justify-content: flex-start;
+}
+
+.card {
+  width: calc(25% - 20px);
+  background: #fffaf5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(165, 91, 28, 0.15); /* 主色陰影 */
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0d9b5; /* 淺色邊框 */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(127, 67, 0, 0.3); /* hover 時更深一點 */
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
+  color: #a55b1c; /* 主標題色 */
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #5a4e4d;
+}
+
+.add-to-cart-btn {
+  margin-top: 10px;
+  background-color: #d2995a; /* 按鈕色 */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #a55b1c;
+}
+
+.card-link {
+  display: block;
+  color: inherit; /* 保持文字顏色 */
+  text-decoration: none; /* 去掉下劃線 */
+}
+.card-link img {
+  width: 100%;
+  display: block;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #f44336; /* 紅色背景代表錯誤 */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+.notification.success {
+  background-color: #4caf50; /* 成功訊息用綠色 */
+}
+
+/* 手機版：寬度768px以下 */
+@media (max-width: 768px) {
+  #hamburger {
+    display: block; /* 顯示漢堡按鈕 */
+  }
+  #header-right.menu {
+    display: none; /* 手機版隱藏選單 */
+    flex-direction: column;
+    background-color: #f0d9b5;
+    position: absolute;
+    top: 60px; /* header底下 */
+    right: 20px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(171, 122, 95, 0.4);
+  }
+  #header-right.menu.active {
+    display: flex; /* 漢堡點擊後顯示選單 */
+  }
+  /* 手機版選單內連結改成直排 */
+
+  #header-right.menu button {
+    width: 100%;
+  }
+  #header-right.menu input {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  #header-right.menu a {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="addNewStyle.css" />
+    <title>新增商品</title>
+  </head>
+  <body>
+    <form id="add-product-form" enctype="multipart/form-data" method="POST">
+      <fieldset>
+        <legend>商品資訊</legend>
+        <label>
+          <span>商品名稱</span>
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          <span>價格</span>
+          <input type="number" name="price" min="0" required />
+        </label>
+
+        <label>
+          <span>商品描述</span>
+          <textarea name="description" required></textarea>
+        </label>
+
+        <label>
+          <span>庫存數量</span>
+          <input type="number" name="stock" min="0" required />
+        </label>
+
+        <label>
+          <span>類別</span>
+          <select name="category" required>
+            <option value="" disabled selected>請選擇類別</option>
+            <option value="美妝個人">美妝個人</option>
+            <option value="食品飲料">食品飲料</option>
+            <option value="生活雜貨	">生活雜貨</option>
+          </select>
+        </label>
+
+        <label>
+          <span>商品圖片</span>
+          <input type="file" id="image" name="image" accept="image/*" />
+        </label>
+
+        <div class="btn-group">
+          <button id="upload-btn" type="button">上傳圖片</button>
+          <button type="submit">新增商品</button>
+        </div>
+
+        <input type="hidden" id="image_url" name="image_url" />
+
+        <img id="image-preview" alt="圖片預覽" />
+      </fieldset>
+    </form>
+    <a href="index.html" class="back-btn">回商品列表</a>
+    <script src="addNewScript.js"></script>
+  </body>
+</html>

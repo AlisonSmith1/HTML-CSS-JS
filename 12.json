@@ -1,0 +1,29 @@
+{
+  "productId": "p0001",
+  "name": "漢堡",
+  "description": "美味!好吃!",
+  "price": 120,
+  "image": "hamburger.jpg",
+  "stock": 20,
+  "category": "食物"
+}
+
+{
+  "orderId": "o0001",
+  "createdAt": "2025-05-23T11:00:00Z",
+  "items": [
+    { "productId": "p0001", "quantity": 2 },
+    { "productId": "p0002", "quantity": 1 }
+  ],
+  "shippingFee": 60,
+  "couponCode": "WELCOME10",
+  "discount": 5,
+  "total": 240,
+  "paymentMethod": "信用卡",
+  "customer": {
+    "name": "王小明",
+    "phone": "0912345678",
+    "address": "台中市西屯區台灣大道三段99號"
+  },
+  "status": "pending"
+}

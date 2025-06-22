@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>編輯商品</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f5f0;
+        color: #333;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #5d4037;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+      }
+
+      input,
+      select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      button {
+        background-color: #8d6e63;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #6d4c41;
+      }
+
+      a {
+        text-align: center;
+        display: block;
+        margin-top: 20px;
+        color: #5d4037;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>編輯商品</h1>
+    <div id="notification"></div>
+    <form id="edit-product-form">
+      <label>商品名稱:<input type="text" id="name" /></label>
+      <label>價格:<input type="number" id="price" min="0" /></label>
+      <label>描述:<input type="text" id="description" /></label>
+
+      <label>
+        <span>商品圖片</span>
+        <input type="file" id="image" name="image" accept="image/*" />
+      </label>
+
+      <div class="btn-group">
+        <button id="upload-btn" type="button">上傳圖片</button>
+      </div>
+
+      <input type="hidden" id="image_url" name="image_url" />
+
+      <label>庫存:<input type="number" id="stock" min="0" /></label>
+      <label>
+        類型:
+        <select id="sort" name="sort" required>
+          <option value="" disabled selected>請選擇類別</option>
+          <option value="美妝個人">美妝個人</option>
+          <option value="食品飲料">食品飲料</option>
+          <option value="生活雜貨">生活雜貨</option>
+        </select>
+      </label>
+      <button id="edit-btn" type="submit">編輯商品</button>
+    </form>
+    <a href="index.html">← 回商品列表</a>
+    <script src="editScript.js"></script>
+  </body>
+</html>

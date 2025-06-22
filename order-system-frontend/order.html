@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>訂單確認</title>
+    <style>
+      /* 基本樣式重設 */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans TC", sans-serif;
+        color: #333;
+      }
+
+      body {
+        background-color: #f7f3f0;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+        color: #5a4e4d;
+        font-weight: 700;
+        font-size: 2.2rem;
+      }
+
+      form#order-form {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 320px;
+        margin-bottom: 40px;
+      }
+
+      form#order-form label {
+        display: block;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #6a584b;
+      }
+
+      form#order-form input[type="text"],
+      form#order-form input[type="tel"],
+      form#order-form select {
+        width: 100%;
+        padding: 8px 12px;
+        margin-top: 6px;
+        border: 1.5px solid #c9b7a4;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      form#order-form input[type="text"]:focus,
+      form#order-form input[type="tel"]:focus,
+      form#order-form select:focus {
+        outline: none;
+        border-color: #ab7a5f;
+        box-shadow: 0 0 8px rgba(171, 122, 95, 0.4);
+      }
+
+      button#submit-order-btn {
+        width: 100%;
+        background-color: #ab7a5f;
+        color: white;
+        border: none;
+        padding: 12px 0;
+        font-size: 1.1rem;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(171, 122, 95, 0.5);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 10px;
+      }
+
+      button#submit-order-btn:hover {
+        background-color: #7f5941;
+        box-shadow: 0 6px 15px rgba(127, 89, 65, 0.7);
+      }
+
+      /* 訂單摘要區 */
+      #order-summary {
+        background: #fff;
+        padding: 25px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 320px;
+      }
+
+      #order-summary h2 {
+        margin-bottom: 20px;
+        color: #5a4e4d;
+        font-weight: 700;
+        font-size: 1.6rem;
+        border-bottom: 2px solid #ab7a5f;
+        padding-bottom: 8px;
+      }
+
+      #cart-items {
+        list-style: none;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        padding-left: 0;
+      }
+
+      #cart-items li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem;
+        color: #6a584b;
+      }
+
+      #total-amount {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #5a4e4d;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>訂單確認</h1>
+    <form id="order-form">
+      <label>姓名：<input type="text" name="name" id="name" /></label><br />
+      <label>電話：<input type="tel" name="phone" id="phone" /></label><br />
+      <label>地址：<input type="text" name="address" id="address" /></label
+      ><br />
+      <label
+        >付款方式：
+        <select name="payment">
+          <option value="credit">信用卡</option>
+          <option value="cash">貨到付款</option>
+        </select> </label
+      ><br />
+      <button id="submit-order-btn" type="submit">送出訂單</button>
+    </form>
+
+    <div id="order-summary">
+      <h2>購物車內容</h2>
+      <ul id="cart-items"></ul>
+      <p id="total-amount">總金額：NT$0</p>
+    </div>
+
+    <script src="orderScript.js"></script>
+  </body>
+</html>
