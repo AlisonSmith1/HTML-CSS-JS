@@ -14,9 +14,6 @@
       </div>
       <div id="hamburger">☰</div>
       <div id="header-right" class="menu">
-        <input type="text" id="search-input" placeholder="請輸入關鍵字" />
-        <button id="search-btn">搜尋</button>
-        <ul id="search-results"></ul>
         <a href="#" id="view-cart-btn">購物車</a>
         <a href="./purchaseRecord.html">購買紀錄</a>
         <a href="/order-system-frontend/register.html">註冊</a>
@@ -28,23 +25,30 @@
 
     <div class="carousel">
       <div class="slides">
-        <img src="./public/image/coke.jpg" alt="廣告1" class="slide active" />
+        <img
+          src="./public/image/ChatGPT Image 2025年6月23日 下午04_21_40.png"
+          alt="廣告1"
+          class="slide active"
+        />
         <img src="./public/image/coke.jpg" alt="廣告2" class="slide" />
         <img src="./public/image/coke.jpg" alt="廣告3" class="slide" />
       </div>
       <button class="prev">&#10094;</button>
       <button class="next">&#10095;</button>
     </div>
-
-    <div id="category-bar" class="category-bar">
-      <button class="category-btn" data-category="all">全部</button>
-      <button class="category-btn" data-category="美妝個人">美妝個人</button>
-      <button class="category-btn" data-category="食品飲料">食品飲料</button>
-      <button class="category-btn" data-category="生活雜貨">生活雜貨</button>
+    <div id="middle">
+      <span id="category-bar" class="category-bar">
+        <button class="category-btn" data-category="all">全部</button>
+        <button class="category-btn" data-category="美妝個人">美妝個人</button>
+        <button class="category-btn" data-category="食品飲料">食品飲料</button>
+        <button class="category-btn" data-category="生活雜貨">生活雜貨</button>
+      </span>
+      <span id="search-right">
+        <input type="text" id="search-input" placeholder="請輸入關鍵字" />
+        <button id="search-btn">搜尋</button>
+      </span>
     </div>
-
     <div id="product-list" class="product-container"></div>
-
     <script src="indexScript.js"></script>
   </body>
 </html>

@@ -23,7 +23,7 @@ nextBtn.addEventListener("click", nextSlide);
 prevBtn.addEventListener("click", prevSlide);
 
 // 自動輪播
-setInterval(nextSlide, 4000);
+setInterval(nextSlide, 6000);
 
 // 初始化
 showSlide(currentIndex);
