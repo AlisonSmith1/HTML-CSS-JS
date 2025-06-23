@@ -22,11 +22,10 @@ async function fetchProducts() {
 
       card.innerHTML = `
         <a href="/order-system-frontend/product.html?id=${product.product_id}" class="card-link">
-          <img src="${product.image_url}" alt="${product.name}" />
+          <img src="${product.image_url}" alt="${product.name}" style="max-width: 280px; max-height: 280px; object-fit: contain;"/>
           <h2>${product.name}</h2>
           <p>數量:${product.stock}</p>
           <p><strong>價格:NT$${product.price}</strong></p>
-          <p><strong>價格:NT$${product.category_id}</strong></p>
         </a>
         <button class="add-to-cart-btn">加入購物車</button>
       `;
