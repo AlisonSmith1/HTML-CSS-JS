@@ -229,19 +229,20 @@ body {
 
 .category-btn {
   padding: 10px 20px;
-  background-color: #b8a398;
+  background-color: #d2995a;
   border: none;
   border-radius: 8px;
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .category-btn:hover {
-  background-color: #a18373;
+  background-color: #a55b1c;
 }
 
 .category-btn.active {
-  background-color: #a55b1c;
+  background-color: #7f4300;
   color: #fff;
 }
