@@ -1,19 +1,32 @@
+function showProductsByCategory(category) {
+  const allProducts = document.querySelectorAll(".product-card");
+  allProducts.forEach((card) => {
+    if (category === "all" || card.dataset.category === category) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
 async function fetchProducts() {
   try {
     const res = await fetch("http://localhost:3000/homepage");
-
     const products = await res.json();
     const container = document.getElementById("product-list");
 
     products.forEach((product) => {
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "card product-card";
+      card.dataset.category = product.category_id;
+
       card.innerHTML = `
         <a href="/order-system-frontend/product.html?id=${product.product_id}" class="card-link">
           <img src="${product.image_url}" alt="${product.name}" />
           <h2>${product.name}</h2>
           <p>數量:${product.stock}</p>
           <p><strong>價格:NT$${product.price}</strong></p>
+          <p><strong>價格:NT$${product.category_id}</strong></p>
         </a>
         <button class="add-to-cart-btn">加入購物車</button>
       `;
@@ -26,6 +39,24 @@ async function fetchProducts() {
 
       container.appendChild(card);
     });
+
+    // ✅ 加在這裡：商品都建立完後再綁分類按鈕
+    const buttons = document.querySelectorAll(".category-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // 移除所有 active
+        buttons.forEach((b) => b.classList.remove("active"));
+        // 加到目前按的
+        btn.classList.add("active");
+
+        const category = btn.dataset.category;
+        showProductsByCategory(category);
+      });
+    });
+
+    // 預設高亮第一個（全部）
+    buttons[0].classList.add("active");
+    showProductsByCategory("all");
   } catch (err) {
     console.error("取得商品失敗：", err);
   }

@@ -219,3 +219,29 @@ body {
     width: 100%;
   }
 }
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.category-btn {
+  padding: 10px 20px;
+  background-color: #b8a398;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.category-btn:hover {
+  background-color: #a18373;
+}
+
+.category-btn.active {
+  background-color: #a55b1c;
+  color: #fff;
+}
