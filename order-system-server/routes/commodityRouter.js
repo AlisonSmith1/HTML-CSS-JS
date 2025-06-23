@@ -6,10 +6,6 @@ const authenticateToken = require("../middleware/auth");
 router.get("/search", authenticateToken, async (req, res) => {
   const { keyword } = req.query;
 
-  if (!keyword || keyword.trim() === "") {
-    return res.status(400).json({ error: "請輸入搜尋關鍵字" });
-  }
-
   try {
     const result = await pool.query(
       `SELECT * FROM products WHERE name ILIKE $1 OR description ILIKE $1`,

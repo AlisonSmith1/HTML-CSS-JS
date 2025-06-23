@@ -163,10 +163,6 @@ async function checkLoginState() {
 document.getElementById("search-btn").addEventListener("click", async () => {
   const keyword = document.getElementById("search-input").value.trim();
   const token = localStorage.getItem("token")?.replace("Bearer ", "");
-  if (!keyword) {
-    alert("請輸入搜尋關鍵字");
-    return;
-  }
 
   try {
     const res = await fetch(
@@ -191,10 +187,12 @@ document.getElementById("search-btn").addEventListener("click", async () => {
 
     results.forEach((product) => {
       const card = document.createElement("div");
-      card.className = "card"; //className 是 JavaScript 中對 HTML 的 class 屬性所使用的名稱
+      card.className = "card product-card"; // 一定要加 product-card
+      card.dataset.category = product.category_id; // 一定要設定分類屬性
+
       card.innerHTML = `
         <a href="/order-system-frontend/product.html?id=${product.product_id}" class="card-link">
-          <img src="${product.image_url}" alt="${product.name}" />
+          <img src="${product.image_url}" alt="${product.name}" style="max-width: 280px; max-height: 280px; object-fit: contain;" />
           <h2>${product.name}</h2>
           <p>數量:${product.stock}</p>
           <p><strong>價格:NT$${product.price}</strong></p>
@@ -208,7 +206,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
         addToCartHandler(product.product_id);
       });
 
-      container.appendChild(card); //是 JavaScript DOM 操作裡，將一個元素節點 card 加入到容器元素 container 裡面的意思
+      container.appendChild(card);
     });
   } catch (err) {
     console.error("搜尋錯誤：", err);
