@@ -98,24 +98,6 @@ body {
   color: #7f4300;
 }
 
-/* 查看購物車按鈕 */
-#view-cart-btn {
-  background-color: #d2995a;
-  color: #fff;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 25px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(210, 153, 90, 0.5);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
-}
-#view-cart-btn:hover {
-  background-color: #a55b1c;
-  box-shadow: 0 6px 15px rgba(165, 91, 28, 0.7);
-}
-
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

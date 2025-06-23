@@ -3,15 +3,7 @@ const product_id = params.get("id");
 
 async function fetchProduct() {
   try {
-    const token = localStorage.getItem("token")?.replace("Bearer ", "");
-    const res = await fetch(
-      `http://localhost:3000/api/commodity/${product_id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`http://localhost:3000/${product_id}`);
 
     if (res.status === 401) {
       throw new Error("未授權，請重新登入");

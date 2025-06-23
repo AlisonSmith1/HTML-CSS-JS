@@ -1,12 +1,6 @@
 async function fetchProducts() {
   try {
-    const token = localStorage.getItem("token")?.replace("Bearer ", "");
-
-    const res = await fetch("http://localhost:3000/api/commodity", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch("http://localhost:3000/homepage");
 
     const products = await res.json();
     const container = document.getElementById("product-list");

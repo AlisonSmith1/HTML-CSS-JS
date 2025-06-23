@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const { Pool } = require("pg");
+const homepage = require("./routes/homepage");
 const authRouter = require("./routes/authRouter");
 const commodityRouter = require("./routes/commodityRouter");
 const uploadRoute = require("./routes/uploadRouter");
@@ -32,6 +33,8 @@ app.use(cors());
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
+
+app.use("/", homepage);
 
 app.use("/api", uploadRoute); // 接住 /api/upload 請求
 

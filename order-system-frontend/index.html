@@ -17,6 +17,7 @@
         <input type="text" id="search-input" placeholder="請輸入關鍵字" />
         <button id="search-btn">搜尋</button>
         <ul id="search-results"></ul>
+        <a href="#" id="view-cart-btn">購物車</a>
         <a href="./purchaseRecord.html">購買紀錄</a>
         <a href="/order-system-frontend/register.html">註冊</a>
         <a href="/order-system-frontend/login.html">登入</a>
@@ -24,7 +25,13 @@
       </div>
     </div>
     <div id="notification" class="notification" style="display: none"></div>
-    <button id="view-cart-btn">查看購物車</button>
+    <div id="category-bar" class="category-bar">
+      <button class="category-btn" data-category="all">全部</button>
+      <button class="category-btn" data-category="beauty">美妝個人</button>
+      <button class="category-btn" data-category="food">食品飲料</button>
+      <button class="category-btn" data-category="life">生活雜貨</button>
+    </div>
+
     <div id="product-list" class="product-container"></div>
 
     <script src="indexScript.js"></script>
