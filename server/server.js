@@ -15,12 +15,6 @@ require("./config/passport")(passport);
 app.use(passport.initialize());
 const port = process.env.PORT || 3000;
 
-// 資料庫連線設定（Render 上會自動設定 DATABASE_URL）
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
-});
-
 app.use(cors());
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
