@@ -41,7 +41,10 @@ function showProductsByCategory(category) {
 
 async function fetchProducts() {
   try {
-    const res = await fetch("http://localhost:3000/homepage");
+    const res = await fetch("http://localhost:3000/homepage", {
+      credentials: "include", // 如果需要帶 cookie，記得加這行
+    });
+
     const products = await res.json();
     const container = document.getElementById("product-list");
 
@@ -50,6 +53,7 @@ async function fetchProducts() {
       card.className = "card product-card";
       card.dataset.category = product.category_id;
 
+      container.innerHTML = "";
       card.innerHTML = `
         <a href="/app/product.html?id=${product.product_id}" class="card-link">
           <img src="${product.image_url}" alt="${product.name}" style="max-width: 280px; max-height: 280px; object-fit: contain;"/>
