@@ -51,7 +51,7 @@ async function fetchProducts() {
       card.dataset.category = product.category_id;
 
       card.innerHTML = `
-        <a href="/client/product.html?id=${product.product_id}" class="card-link">
+        <a href="/app/product.html?id=${product.product_id}" class="card-link">
           <img src="${product.image_url}" alt="${product.name}" style="max-width: 280px; max-height: 280px; object-fit: contain;"/>
           <h2>${product.name}</h2>
           <p>數量:${product.stock}</p>
@@ -151,7 +151,7 @@ function checkCartBtnState() {
       showNotification("請先登入才能查看購物車", "error");
       return;
     }
-    window.location.href = `/client/cart.html`;
+    window.location.href = `/app/cart.html`;
   });
 }
 
@@ -165,7 +165,7 @@ function checkPostAnchorState() {
       showNotification("請先登入才能新增商品", "error");
       return;
     }
-    window.location.href = `/client/addNew.html`;
+    window.location.href = `/app/addNew.html`;
   });
 }
 
@@ -179,7 +179,7 @@ function checkMyProductsState() {
       showNotification("請先登入才能查看商品", "error");
       return;
     }
-    window.location.href = `/client/myProducts.html`;
+    window.location.href = `/app/myProducts.html`;
   });
 }
 async function checkLoginState() {
@@ -221,7 +221,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
       card.dataset.category = product.category_id; // 一定要設定分類屬性
 
       card.innerHTML = `
-        <a href="/client/product.html?id=${product.product_id}" class="card-link">
+        <a href="/app/product.html?id=${product.product_id}" class="card-link">
           <img src="${product.image_url}" alt="${product.name}" style="max-width: 280px; max-height: 280px; object-fit: contain;" />
           <h2>${product.name}</h2>
           <p>數量:${product.stock}</p>

@@ -45,7 +45,7 @@ async function setupProductFormHandler() {
           e.target.reset();
           imageUrl = "";
           document.getElementById("image-preview").style.display = "none";
-          window.location.href = "/client/index.html";
+          window.location.href = "/app/index.html";
         } else {
           alert("新增失敗：" + data.message);
         }

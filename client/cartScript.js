@@ -142,7 +142,7 @@ document.getElementById("checkout-btn").addEventListener("click", () => {
     alert("購物車是空的！");
     return;
   } else {
-    window.location.href = `/client/order.html`;
+    window.location.href = `/app/order.html`;
   }
 });
 

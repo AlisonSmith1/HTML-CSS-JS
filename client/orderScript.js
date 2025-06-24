@@ -160,7 +160,7 @@ document
       await reduceQuantity(cart); // 減少庫存
       await cleanCartItems(); // 清空購物車
 
-      window.location.href = `/client/thankyou.html`;
+      window.location.href = `/app/thankyou.html`;
     } catch (err) {
       console.error("送出訂單時錯誤：", err);
       alert("訂單送出失敗，請稍後再試");
