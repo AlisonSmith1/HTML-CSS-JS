@@ -24,18 +24,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../intro/Opening.html"));
 });
 
-// ✅ 提供 /app 的靜態資源（例如 index.html、CSS、JS）
-app.use("/app", express.static(path.join(__dirname, "../client")));
-
-// ✅ 若訪問 /app，直接顯示前端首頁 index.html
-app.get("/app", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/index.html"));
-});
-
+// 路由設定
 app.use("/", homepage);
-
 app.use("/api", uploadRoute); // 接住 /api/upload 請求
-
 app.use("/api/user", authRouter);
 app.use(
   "/api/commodity",
