@@ -15,7 +15,6 @@ app.use(passport.initialize());
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
@@ -34,7 +33,6 @@ app.get("/app", (req, res) => {
 });
 
 // 路由設定
-app.use("/homepage", homepage);
 app.use("/api", uploadRoute); // 接住 /api/upload 請求
 app.use("/api/user", authRouter);
 app.use(
@@ -42,7 +40,7 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   commodityRouter
 );
-
+app.use("/homepage", homepage);
 app.listen(port, () => {
   console.log(`伺服器已啟動：http://localhost:${port}`);
 });
