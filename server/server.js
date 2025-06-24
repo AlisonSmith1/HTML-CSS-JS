@@ -2,7 +2,6 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { Pool } = require("pg");
 const homepage = require("./routes/homepage");
 const authRouter = require("./routes/authRouter");
 const commodityRouter = require("./routes/commodityRouter");

@@ -7,7 +7,7 @@ dotenv.config({ path: "../.env" });
 module.exports = (passport) => {
   let opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-  opts.secretOrKey = process.env.JWT_SECRET;
+  opts.secretOrKey = "1234";
 
   passport.use(
     new JwtStrategy(opts, async (jwt_payload, done) => {
