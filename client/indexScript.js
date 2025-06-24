@@ -41,7 +41,9 @@ function showProductsByCategory(category) {
 
 async function fetchProducts() {
   try {
-    const res = await fetch("http://localhost:3000/homepage/homepage");
+    const res = await fetch("http://localhost:3000/homepage/homepage" {
+  credentials: 'include' // 如果你有使用 cookie 認證，必須帶這行
+});
     const products = await res.json();
     const container = document.getElementById("product-list");
 
