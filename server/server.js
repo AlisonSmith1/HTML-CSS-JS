@@ -31,6 +31,7 @@ app.get("/app", (req, res) => {
 });
 
 // 路由設定
+app.use("/homepage", homepage);
 app.use("/api", uploadRoute); // 接住 /api/upload 請求
 app.use("/api/user", authRouter);
 app.use(
@@ -38,7 +39,7 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   commodityRouter
 );
-app.use("/homepage", homepage);
+
 app.listen(port, () => {
   console.log(`伺服器已啟動：http://localhost:${port}`);
 });
