@@ -26,16 +26,19 @@ async function setupProductFormHandler() {
       };
       console.log(product);
       try {
-        const res = await fetch(`http://localhost:3000/api/commodity/post`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage
-              .getItem("token")
-              ?.replace("Bearer ", "")}`,
-          },
-          body: JSON.stringify(product),
-        });
+        const res = await fetch(
+          `https://html-css-js-production.up.railway.app/api/commodity/post`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage
+                .getItem("token")
+                ?.replace("Bearer ", "")}`,
+            },
+            body: JSON.stringify(product),
+          }
+        );
 
         const data = await res.json();
         console.log(data);
@@ -85,10 +88,13 @@ async function setupImageUploadHandler() {
       formData.append("image", file);
 
       try {
-        const res = await fetch("http://localhost:3000/api/upload", {
-          method: "POST",
-          body: formData,
-        });
+        const res = await fetch(
+          "https://html-css-js-production.up.railway.app/api/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (!res.ok) {
           const errMsg = await res.text();
@@ -97,7 +103,7 @@ async function setupImageUploadHandler() {
 
         const result = await res.json();
 
-        imageUrl = `http://localhost:3000${result.url}`;
+        imageUrl = `https://html-css-js-production.up.railway.app${result.url}`;
         document.getElementById("image_url").value = imageUrl;
 
         const preview = document.getElementById("image-preview");

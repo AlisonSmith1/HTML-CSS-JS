@@ -7,7 +7,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/searchOrders?keyword=${encodeURIComponent(
+      `https://html-css-js-production.up.railway.app/api/commodity/searchOrders?keyword=${encodeURIComponent(
         keyword
       )}&owner_id=${userId}`,
       {
@@ -52,7 +52,7 @@ document.getElementById("orders-list").addEventListener("click", async (e) => {
     if (confirm("確定要刪除嗎？")) {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/commodity/ordersDelete`,
+          `https://html-css-js-production.up.railway.app/api/commodity/ordersDelete`,
           {
             method: "DELETE",
             headers: {

@@ -15,7 +15,7 @@ async function fetchCart() {
   //拿到資料
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/getCartItems`,
+      `https://html-css-js-production.up.railway.app/api/commodity/getCartItems`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ function renderCart() {
       // 刪除資料庫內容
       try {
         await fetch(
-          `http://localhost:3000/api/commodity/deleteCartItem/${cartItems.product_id}`,
+          `https://html-css-js-production.up.railway.app/api/commodity/deleteCartItem/${cartItems.product_id}`,
           {
             method: "DELETE",
             headers: {
@@ -109,7 +109,7 @@ function renderCart() {
       try {
         // 更新資料
         const res = await fetch(
-          `http://localhost:3000/api/commodity/patchCartItem/${itemId}`,
+          `https://html-css-js-production.up.railway.app/api/commodity/patchCartItem/${itemId}`,
           {
             method: "PATCH",
             headers: {

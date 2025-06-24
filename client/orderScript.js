@@ -9,11 +9,14 @@ let totalPrice = 0;
 async function fetchOrder() {
   const token = localStorage.getItem("token")?.replace("Bearer ", "");
   try {
-    const res = await fetch(`http://localhost:3000/api/commodity/getOrder`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      `https://html-css-js-production.up.railway.app/api/commodity/getOrder`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!res.ok) {
       throw new Error("伺服器回應錯誤");
@@ -138,7 +141,7 @@ document
 
     try {
       const res = await fetch(
-        `http://localhost:3000/api/commodity/order/${userId}`,
+        `https://html-css-js-production.up.railway.app/api/commodity/order/${userId}`,
         {
           method: "POST",
           headers: {
@@ -171,7 +174,7 @@ async function reduceQuantity(cart) {
   const token = localStorage.getItem("token")?.replace("Bearer ", "");
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/reduceQuantity/${userId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/reduceQuantity/${userId}`,
       {
         method: "PATCH",
         headers: {
@@ -197,7 +200,7 @@ async function cleanCartItems() {
   console.log("前端送出清空 userId：", userId);
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/cleanCartItems/${userId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/cleanCartItems/${userId}`,
       {
         method: "DELETE",
         headers: {

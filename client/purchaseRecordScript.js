@@ -7,7 +7,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/searchPurchaseRecord?keyword=${encodeURIComponent(
+      `https://html-css-js-production.up.railway.app/api/commodity/searchPurchaseRecord?keyword=${encodeURIComponent(
         keyword
       )}&userId=${userId}`,
       {

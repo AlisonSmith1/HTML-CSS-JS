@@ -7,7 +7,7 @@ async function fetchEditProduct() {
   try {
     const token = localStorage.getItem("token")?.replace("Bearer ", "");
     const res = await fetch(
-      `http://localhost:3000/api/commodity/editProduct/${productId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/editProduct/${productId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -49,7 +49,7 @@ document.getElementById("edit-btn").addEventListener("click", async (e) => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/patchProduct/${productId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/patchProduct/${productId}`,
       {
         method: "PATCH",
         headers: {
@@ -110,10 +110,13 @@ function setupImageUploadHandler() {
       formData.append("image", file);
 
       try {
-        const res = await fetch("http://localhost:3000/api/upload", {
-          method: "POST",
-          body: formData,
-        });
+        const res = await fetch(
+          "https://html-css-js-production.up.railway.app/api/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (!res.ok) {
           const errMsg = await res.text();
@@ -121,7 +124,7 @@ function setupImageUploadHandler() {
         }
 
         const result = await res.json();
-        const fullUrl = `http://localhost:3000${result.url}`;
+        const fullUrl = `https://html-css-js-production.up.railway.app${result.url}`;
         document.getElementById("image_url").value = fullUrl;
         alert("圖片上傳成功！");
       } catch (error) {

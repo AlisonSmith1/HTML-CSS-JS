@@ -5,9 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function fetchMyProducts(token) {
   try {
-    const res = await fetch(`http://localhost:3000/api/commodity/my-products`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const res = await fetch(
+      `https://html-css-js-production.up.railway.app/api/commodity/my-products`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
 
     const products = await res.json();
 
@@ -86,7 +89,7 @@ async function deleteProduct(productId) {
   const token = localStorage.getItem("token")?.replace("Bearer ", "");
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/delete/${productId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/delete/${productId}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },

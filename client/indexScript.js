@@ -41,7 +41,9 @@ function showProductsByCategory(category) {
 
 async function fetchProducts() {
   try {
-    const res = await fetch("http://localhost:3000/homepage/index");
+    const res = await fetch(
+      "https://html-css-js-production.up.railway.app/homepage/index"
+    );
     const products = await res.json();
     const container = document.getElementById("product-list");
 
@@ -107,17 +109,20 @@ async function addToCartHandler(id) {
   }
 
   try {
-    const res = await fetch(`http://localhost:3000/api/commodity/cart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        product_id: id,
-        quantity: 1,
-      }),
-    });
+    const res = await fetch(
+      `https://html-css-js-production.up.railway.app/api/commodity/cart`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product_id: id,
+          quantity: 1,
+        }),
+      }
+    );
 
     const result = await res.json();
 
@@ -198,7 +203,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/search?keyword=${encodeURIComponent(
+      `https://html-css-js-production.up.railway.app/api/commodity/search?keyword=${encodeURIComponent(
         keyword
       )}`,
       {

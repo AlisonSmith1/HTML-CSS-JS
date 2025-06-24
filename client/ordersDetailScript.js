@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/ordersDetail/${orderId}?owner_id=${userId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/ordersDetail/${orderId}?owner_id=${userId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

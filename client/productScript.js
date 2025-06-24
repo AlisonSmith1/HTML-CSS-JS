@@ -3,7 +3,9 @@ const product_id = params.get("id");
 
 async function fetchProduct() {
   try {
-    const res = await fetch(`http://localhost:3000/homepage/${product_id}`);
+    const res = await fetch(
+      `https://html-css-js-production.up.railway.app/homepage/${product_id}`
+    );
 
     if (res.status === 401) {
       throw new Error("未授權，請重新登入");
@@ -44,17 +46,20 @@ async function addToCartHandler(id) {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/commodity/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        product_id: id,
-        quantity: 1,
-      }),
-    });
+    const res = await fetch(
+      "https://html-css-js-production.up.railway.app/api/commodity/cart",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product_id: id,
+          quantity: 1,
+        }),
+      }
+    );
 
     const result = await res.json();
 

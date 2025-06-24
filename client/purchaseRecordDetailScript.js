@@ -5,7 +5,7 @@ const token = localStorage.getItem("token")?.replace("Bearer ", "");
 async function fetchpurchaseRecordDetail() {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/commodity/purchaseRecordDetail/${orderId}`,
+      `https://html-css-js-production.up.railway.app/api/commodity/purchaseRecordDetail/${orderId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
