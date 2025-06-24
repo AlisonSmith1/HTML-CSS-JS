@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const pool = require("../db");
 
-router.get("/homepage", async (req, res) => {
+router.get("/index", async (req, res) => {
   try {
     const result = await pool.query(
       "SELECT * FROM products ORDER BY created_at DESC"

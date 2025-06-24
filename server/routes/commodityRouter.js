@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const pool = require("../db");
-const passport = require("passport");
 const authenticateToken = require("../middleware/auth");
 
 router.get("/search", authenticateToken, async (req, res) => {
