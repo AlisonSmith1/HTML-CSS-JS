@@ -7,13 +7,16 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   const password = formData.get("password");
 
   try {
-    const res = await fetch("http://localhost:3000/api/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const res = await fetch(
+      "https://html-css-js-production.up.railway.app/api/user/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
     const data = await res.json();
 
