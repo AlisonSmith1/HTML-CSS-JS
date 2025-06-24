@@ -18,6 +18,7 @@ app.use(cors());
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.use(express.static(path.join(__dirname, "../intro"))); // 或 client/public 等
 // ✅ 加入開場動畫首頁（Opening.html）→ 進入網址根目錄 /
