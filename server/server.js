@@ -19,8 +19,18 @@ app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
 
-// app.use("/", express.static(path.join(__dirname, "../intro")));
-// app.use("/app", express.static(path.join(__dirname, "../client")));
+// ✅ 加入開場動畫首頁（Opening.html）→ 進入網址根目錄 /
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../intro/Opening.html"));
+});
+
+// ✅ 提供 /app 的靜態資源（例如 index.html、CSS、JS）
+app.use("/app", express.static(path.join(__dirname, "../client")));
+
+// ✅ 若訪問 /app，直接顯示前端首頁 index.html
+app.get("/app", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
 
 app.use("/", homepage);
 
