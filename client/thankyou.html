@@ -4,19 +4,53 @@
     <meta charset="UTF-8" />
     <title>感謝訂購</title>
     <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f6f2ed;
+        color: #4a3b2c;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        color: #7a4e2f;
+        animation: fadeIn 1s ease-in-out;
+      }
+
       button {
-        background-color: #b8a398;
+        background-color: #d2995a;
         color: white;
         border: none;
-        padding: 10px 20px;
+        padding: 12px 24px;
         font-size: 1rem;
-        border-radius: 5px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.2s;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
       }
 
       button:hover {
-        background-color: #8f7b6a;
+        background-color: #a55b1c;
+        transform: scale(1.05);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
