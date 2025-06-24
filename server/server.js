@@ -14,12 +14,7 @@ require("./config/passport")(passport);
 app.use(passport.initialize());
 const port = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: "http://localhost:5500", // 請改成你前端所在的網址（含 port）
-    credentials: true, // 如果你前端有帶 cookie，可以開啟
-  })
-);
+app.use(cors());
 
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +34,7 @@ app.get("/app", (req, res) => {
 });
 
 // 路由設定
-app.use("/", homepage);
+app.use("/homepage", homepage);
 app.use("/api", uploadRoute); // 接住 /api/upload 請求
 app.use("/api/user", authRouter);
 app.use(

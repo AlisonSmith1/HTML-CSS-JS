@@ -3,7 +3,7 @@ const product_id = params.get("id");
 
 async function fetchProduct() {
   try {
-    const res = await fetch(`http://localhost:3000/${product_id}`);
+    const res = await fetch(`http://localhost:3000/homepage/${product_id}`);
 
     if (res.status === 401) {
       throw new Error("未授權，請重新登入");
