@@ -64,7 +64,7 @@ document.getElementById("edit-btn").addEventListener("click", async (e) => {
     if (res.ok) {
       showNotification("商品更新成功", "success");
       setTimeout(() => {
-        window.location.href = "/order-system-frontend/index.html";
+        window.location.href = "/client/index.html";
       }, 500);
     } else {
       showNotification(data.error || "更新失敗", "error");

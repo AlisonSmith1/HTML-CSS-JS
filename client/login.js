@@ -25,7 +25,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
       localStorage.setItem("user", JSON.stringify(data.user));
 
       // 跳轉到會員頁或首頁
-      window.location.href = "/order-system-frontend/index.html";
+      window.location.href = "/client/index.html";
     } else {
       // 登入失敗，顯示錯誤訊息
       document.getElementById("error-message").textContent =
