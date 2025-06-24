@@ -34,5 +34,5 @@ window.addEventListener("load", checkScroll);
 
 // 按鈕點擊事件：跳轉到主畫面 (請改成你想要的網址)
 enterBtn.addEventListener("click", () => {
-  window.location.href = "./order-system-frontend/index.html";
+  window.location.href = "../client/index.html";
 });

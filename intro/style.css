@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: white;
+  color: #3b2f2f;
   overflow-x: hidden;
   position: relative;
   height: 100vh;
@@ -20,6 +20,7 @@ section {
   transition: all 0.8s ease;
   position: relative;
   z-index: 1;
+  color: #7f4300;
 }
 
 section.active {
@@ -47,7 +48,7 @@ section.active {
 .bubble {
   position: absolute;
   bottom: -100px;
-  background: rgba(0, 168, 204, 0.15);
+  background: rgba(251, 155, 81, 0.15);
   border-radius: 50%;
   animation: floatUp linear infinite;
 }
@@ -106,7 +107,7 @@ section.active {
   padding: 10px 20px;
   font-size: 1.2rem;
   cursor: pointer;
-  background-color: #00a8cc;
+  background-color: #cd8f59;
   color: white;
   border: none;
   border-radius: 5px;
@@ -114,5 +115,5 @@ section.active {
 }
 
 #enterBtn:hover {
-  background-color: #007a99;
+  background-color: #ce7004;
 }
