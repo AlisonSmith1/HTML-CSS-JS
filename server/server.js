@@ -19,8 +19,8 @@ app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
 
-app.use("/", express.static(path.join(__dirname, "../intro/Opening.html")));
-app.use("/app", express.static(path.join(__dirname, "../client/index.html")));
+// app.use("/", express.static(path.join(__dirname, "../intro")));
+// app.use("/app", express.static(path.join(__dirname, "../client")));
 
 app.use("/", homepage);
 
