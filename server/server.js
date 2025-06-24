@@ -13,26 +13,22 @@ const path = require("path");
 const passport = require("passport");
 require("./config/passport")(passport);
 app.use(passport.initialize());
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// PostgreSQL 連線設定（請根據你的本機設定調整）
+// 資料庫連線設定（Render 上會自動設定 DATABASE_URL）
 const pool = new Pool({
-  user: "postgres", // PostgreSQL 使用者名稱
-  host: "localhost",
-  database: "shop", // 請改成你剛建立的資料庫名稱
-  password: "1234", // 請改成你的密碼
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
 });
-
-// app.use((req, res, next) => {
-//   console.log("Authorization Header:", req.headers.authorization);
-//   next();
-// });
 
 app.use(cors());
 app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
+app.use(passport.initialize());
+
+app.use("/", express.static(path.join(__dirname, "../intro")));
+app.use("/app", express.static(path.join(__dirname, "../client")));
 
 app.use("/", homepage);
 
