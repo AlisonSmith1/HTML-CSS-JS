@@ -66,68 +66,6 @@ router.get("/searchOrders", authenticateToken, async (req, res) => {
   }
 });
 
-// 新增商品
-router.post("/post/", authenticateToken, async (req, res) => {
-  const { name, price, description, image_url, stock, category_id } = req.body;
-  const userId = req.user.id;
-
-  // 檢查欄位是否有缺
-  if (
-    !name ||
-    price == null ||
-    !description ||
-    !image_url ||
-    stock == null ||
-    !category_id
-  ) {
-    return res.status(400).json({ error: "請完整填寫" });
-  }
-
-  try {
-    const result = await pool.query(
-      `INSERT INTO products 
-      (name, price, description, image_url, stock, category_id, owner_id) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-      [name, price, description, image_url, stock, category_id, userId]
-    );
-
-    res.json({ msg: "商品新增成功", product: result.rows[0] });
-  } catch (err) {
-    console.error("資料庫錯誤：", err);
-    res.status(500).json({ error: "新增商品失敗" });
-  }
-});
-router.post("/post/:userId", authenticateToken, async (req, res) => {
-  const { name, price, description, image_url, stock, category_id } = req.body;
-  const { userId } = req.params; // ✅ 修正這一行
-
-  // 檢查欄位是否有缺
-  if (
-    !name ||
-    price == null ||
-    !description ||
-    !image_url ||
-    stock == null ||
-    !category_id
-  ) {
-    return res.status(400).json({ error: "請完整填寫" });
-  }
-
-  try {
-    const result = await pool.query(
-      `INSERT INTO products 
-      (name, price, description, image_url, stock, category_id, user_id) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-      [name, price, description, image_url, stock, category_id, userId]
-    );
-
-    res.json({ msg: "商品新增成功", product: result.rows[0] });
-  } catch (err) {
-    console.error("資料庫錯誤：", err);
-    res.status(500).json({ error: "新增商品失敗" });
-  }
-});
-
 // 取得特定使用者的商品
 router.get("/my-products", authenticateToken, async (req, res) => {
   const userId = req.user.id;
@@ -194,90 +132,37 @@ router.get("/getOrder/", authenticateToken, async (req, res) => {
   }
 });
 
-// 拿到要更新的商品
-router.get("/editProduct/:productId", authenticateToken, async (req, res) => {
-  const { productId } = req.params;
+// 新增商品
+router.post("/post/", authenticateToken, async (req, res) => {
+  const { name, price, description, image_url, stock, category_id } = req.body;
+  const userId = req.user.id;
+
+  // 檢查欄位是否有缺
+  if (
+    !name ||
+    price == null ||
+    !description ||
+    !image_url ||
+    stock == null ||
+    !category_id
+  ) {
+    return res.status(400).json({ error: "請完整填寫" });
+  }
+
   try {
     const result = await pool.query(
-      `SELECT*FROM products WHERE product_id = $1`,
-      [productId]
+      `INSERT INTO products 
+      (name, price, description, image_url, stock, category_id, owner_id) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [name, price, description, image_url, stock, category_id, userId]
     );
-    res.json({ msg: "商品更新成功", product: result.rows[0] });
+
+    res.json({ msg: "商品新增成功", product: result.rows[0] });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "更新商品失敗" });
+    console.error("資料庫錯誤：", err);
+    res.status(500).json({ error: "新增商品失敗" });
   }
 });
-
-// 更新商品
-router.patch(
-  "/patchProduct/:productId",
-  authenticateToken,
-  async (req, res) => {
-    const { productId } = req.params;
-    const { name, price, description, image_url, stock, category_id } =
-      req.body;
-
-    try {
-      const result = await pool.query(
-        `UPDATE products 
-         SET name=$1, price=$2, description=$3, image_url=$4, stock=$5, category_id=$6 
-         WHERE product_id=$7 
-         RETURNING *`,
-        [name, price, description, image_url, stock, category_id, productId]
-      );
-
-      if (result.rowCount === 0) {
-        return res
-          .status(404)
-          .json({ error: "找不到此商品，可能已被刪除或商品 ID 錯誤" });
-      }
-
-      res.json({ msg: "商品更新成功", product: result.rows[0] });
-    } catch (err) {
-      console.error("商品更新錯誤：", err);
-      res.status(500).json({ error: "更新商品失敗" });
-    }
-  }
-);
-
-// 刪除商品
-router.delete("/delete/:productId", authenticateToken, async (req, res) => {
-  const { productId } = req.params;
-
-  try {
-    await pool.query("DELETE FROM products WHERE product_id = $1", [productId]);
-    res.json({ msg: "商品已刪除" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "刪除商品失敗" });
-  }
-});
-
-//刪除購物車商品
-router.delete(
-  "/cleanCartItems/:userId",
-  authenticateToken,
-  async (req, res) => {
-    const userId = parseInt(req.params.userId);
-
-    if (isNaN(userId)) {
-      return res.status(400).json({ error: "無效的使用者 ID" });
-    }
-
-    try {
-      const result = await pool.query(
-        "DELETE FROM cart_items WHERE userid = $1",
-        [userId]
-      );
-      // console.log(`已刪除 ${result.rowCount} 筆資料`);
-      res.json({ msg: "購物車商品已刪除", deletedCount: result.rowCount });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ error: "刪除購物車商品失敗" });
-    }
-  }
-);
 
 //post index使用者購物車中的商品
 router.post("/cart/", authenticateToken, async (req, res) => {
@@ -312,27 +197,199 @@ router.post("/cart/", authenticateToken, async (req, res) => {
   }
 });
 
-// 刪除購物車項目
-router.delete(
-  "/deleteCartItem/:product_id",
+// 拿到要更新的商品
+router.get("/editProduct/:productId", authenticateToken, async (req, res) => {
+  const { productId } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT*FROM products WHERE product_id = $1`,
+      [productId]
+    );
+    res.json({ msg: "商品更新成功", product: result.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "更新商品失敗" });
+  }
+});
+
+router.get(
+  "/purchaseRecordDetail/:orderId",
   authenticateToken,
   async (req, res) => {
-    const { product_id } = req.params;
+    const { orderId } = req.params;
+    try {
+      const orderResult = await pool.query(
+        `SELECT order_id, name, phone, total, date FROM orders WHERE order_id = $1`,
+        [orderId]
+      );
+      const itemsResult = await pool.query(
+        `SELECT name, price, quantity FROM order_items WHERE order_id = $1`,
+        [orderId]
+      );
+
+      res.json({
+        order: orderResult.rows[0],
+        items: itemsResult.rows,
+      });
+    } catch (err) {
+      console.error("查詢訂單明細失敗：", err);
+      res.status(500).json({ error: "伺服器錯誤" });
+    }
+  }
+);
+
+router.get("/ordersDetail/:orderId", authenticateToken, async (req, res) => {
+  const orderId = req.params.orderId;
+  const ownerId = req.query.owner_id; // 商家ID，必須從前端帶入且驗證
+
+  if (!ownerId) {
+    return res.status(400).json({ error: "缺少 owner_id" });
+  }
+
+  try {
+    // 1. 取得訂單主檔資料
+    const orderResult = await pool.query(
+      `SELECT order_id, name, phone, address, payment, total, date
+       FROM orders WHERE order_id = $1`,
+      [orderId]
+    );
+
+    if (orderResult.rowCount === 0) {
+      return res.status(404).json({ error: "訂單不存在" });
+    }
+
+    const order = orderResult.rows[0];
+
+    // 2. 取得該訂單中該商家擁有的商品明細
+    const itemsResult = await pool.query(
+      `SELECT p.name, oi.quantity, oi.price
+       FROM order_items oi
+       JOIN products p ON oi.product_id = p.product_id
+       WHERE oi.order_id = $1 AND p.owner_id = $2`,
+      [orderId, ownerId]
+    );
+
+    order.items = itemsResult.rows;
+
+    return res.json(order);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "伺服器錯誤" });
+  }
+});
+
+router.post("/post/:userId", authenticateToken, async (req, res) => {
+  const { name, price, description, image_url, stock, category_id } = req.body;
+  const { userId } = req.params; // ✅ 修正這一行
+
+  // 檢查欄位是否有缺
+  if (
+    !name ||
+    price == null ||
+    !description ||
+    !image_url ||
+    stock == null ||
+    !category_id
+  ) {
+    return res.status(400).json({ error: "請完整填寫" });
+  }
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO products 
+      (name, price, description, image_url, stock, category_id, user_id) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [name, price, description, image_url, stock, category_id, userId]
+    );
+
+    res.json({ msg: "商品新增成功", product: result.rows[0] });
+  } catch (err) {
+    console.error("資料庫錯誤：", err);
+    res.status(500).json({ error: "新增商品失敗" });
+  }
+});
+
+router.post("/order/:userId", authenticateToken, async (req, res) => {
+  const client = await pool.connect();
+  try {
+    const { order_id, name, phone, address, payment, total, date, items } =
+      req.body;
+    const userId = req.user.id;
+
+    await client.query("BEGIN");
+
+    // ➤ 儲存訂單
+    const insertOrderText = `
+      INSERT INTO orders (order_id, name, phone, address, payment, total, date, user_id)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+    `;
+    const insertOrderValues = [
+      order_id,
+      name,
+      phone,
+      address,
+      payment,
+      total,
+      date,
+      userId,
+    ];
+    await client.query(insertOrderText, insertOrderValues);
+
+    // ➤ 儲存訂單明細
+    const insertItemText = `
+  INSERT INTO order_items (order_id, product_id, name, price, quantity, user_id)
+  VALUES ($1, $2, $3, $4, $5, $6)
+  `;
+    for (let item of items) {
+      await client.query(insertItemText, [
+        order_id, // 訂單編號
+        item.product_id, // 商品 ID
+        item.name,
+        item.price,
+        item.quantity,
+        userId,
+      ]);
+    }
+
+    await client.query("COMMIT");
+    res.status(201).json({ message: "訂單建立成功", orderId: order_id });
+  } catch (err) {
+    await client.query("ROLLBACK");
+    console.error("訂單寫入失敗:", err);
+    res.status(500).json({ message: "伺服器錯誤" });
+  } finally {
+    client.release();
+  }
+});
+
+// 更新商品
+router.patch(
+  "/patchProduct/:productId",
+  authenticateToken,
+  async (req, res) => {
+    const { productId } = req.params;
+    const { name, price, description, image_url, stock, category_id } =
+      req.body;
 
     try {
       const result = await pool.query(
-        `DELETE FROM cart_items WHERE product_id = $1 RETURNING *`,
-        [product_id]
+        `UPDATE products 
+         SET name=$1, price=$2, description=$3, image_url=$4, stock=$5, category_id=$6 
+         WHERE product_id=$7 
+         RETURNING *`,
+        [name, price, description, image_url, stock, category_id, productId]
       );
 
       if (result.rowCount === 0) {
-        return res.status(404).json({ error: "找不到該購物車項目" });
+        return res
+          .status(404)
+          .json({ error: "找不到此商品，可能已被刪除或商品 ID 錯誤" });
       }
 
-      res.json({ message: "刪除成功", deletedItem: result.rows[0] });
+      res.json({ msg: "商品更新成功", product: result.rows[0] });
     } catch (err) {
-      console.error("刪除購物車項目錯誤:", err);
-      res.status(500).json({ error: "伺服器錯誤" });
+      console.error("商品更新錯誤：", err);
+      res.status(500).json({ error: "更新商品失敗" });
     }
   }
 );
@@ -406,58 +463,68 @@ router.patch("/reduceQuantity/:userId", authenticateToken, async (req, res) => {
   }
 });
 
-router.post("/order/:userId", authenticateToken, async (req, res) => {
-  const client = await pool.connect();
+// 刪除商品
+router.delete("/delete/:productId", authenticateToken, async (req, res) => {
+  const { productId } = req.params;
+
   try {
-    const { order_id, name, phone, address, payment, total, date, items } =
-      req.body;
-    const userId = req.user.id;
-
-    await client.query("BEGIN");
-
-    // ➤ 儲存訂單
-    const insertOrderText = `
-      INSERT INTO orders (order_id, name, phone, address, payment, total, date, user_id)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    `;
-    const insertOrderValues = [
-      order_id,
-      name,
-      phone,
-      address,
-      payment,
-      total,
-      date,
-      userId,
-    ];
-    await client.query(insertOrderText, insertOrderValues);
-
-    // ➤ 儲存訂單明細
-    const insertItemText = `
-  INSERT INTO order_items (order_id, product_id, name, price, quantity, user_id)
-  VALUES ($1, $2, $3, $4, $5, $6)
-  `;
-    for (let item of items) {
-      await client.query(insertItemText, [
-        order_id, // 訂單編號
-        item.product_id, // 商品 ID
-        item.name,
-        item.price,
-        item.quantity,
-        userId,
-      ]);
-    }
-
-    await client.query("COMMIT");
-    res.status(201).json({ message: "訂單建立成功", orderId: order_id });
+    await pool.query("DELETE FROM products WHERE product_id = $1", [productId]);
+    res.json({ msg: "商品已刪除" });
   } catch (err) {
-    await client.query("ROLLBACK");
-    console.error("訂單寫入失敗:", err);
-    res.status(500).json({ message: "伺服器錯誤" });
-  } finally {
-    client.release();
+    console.error(err);
+    res.status(500).json({ error: "刪除商品失敗" });
   }
 });
+
+//刪除購物車商品
+router.delete(
+  "/cleanCartItems/:userId",
+  authenticateToken,
+  async (req, res) => {
+    const userId = parseInt(req.params.userId);
+
+    if (isNaN(userId)) {
+      return res.status(400).json({ error: "無效的使用者 ID" });
+    }
+
+    try {
+      const result = await pool.query(
+        "DELETE FROM cart_items WHERE userid = $1",
+        [userId]
+      );
+      // console.log(`已刪除 ${result.rowCount} 筆資料`);
+      res.json({ msg: "購物車商品已刪除", deletedCount: result.rowCount });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "刪除購物車商品失敗" });
+    }
+  }
+);
+
+// 刪除購物車項目
+router.delete(
+  "/deleteCartItem/:product_id",
+  authenticateToken,
+  async (req, res) => {
+    const { product_id } = req.params;
+
+    try {
+      const result = await pool.query(
+        `DELETE FROM cart_items WHERE product_id = $1 RETURNING *`,
+        [product_id]
+      );
+
+      if (result.rowCount === 0) {
+        return res.status(404).json({ error: "找不到該購物車項目" });
+      }
+
+      res.json({ message: "刪除成功", deletedItem: result.rows[0] });
+    } catch (err) {
+      console.error("刪除購物車項目錯誤:", err);
+      res.status(500).json({ error: "伺服器錯誤" });
+    }
+  }
+);
 
 router.delete("/ordersDelete", authenticateToken, async (req, res) => {
   const { order_id } = req.body;
@@ -506,72 +573,6 @@ router.delete("/ordersDelete", authenticateToken, async (req, res) => {
     res.status(500).json({ error: "伺服器錯誤" });
   } finally {
     client.release();
-  }
-});
-
-router.get(
-  "/purchaseRecordDetail/:orderId",
-  authenticateToken,
-  async (req, res) => {
-    const { orderId } = req.params;
-    try {
-      const orderResult = await pool.query(
-        `SELECT order_id, name, phone, total, date FROM orders WHERE order_id = $1`,
-        [orderId]
-      );
-      const itemsResult = await pool.query(
-        `SELECT name, price, quantity FROM order_items WHERE order_id = $1`,
-        [orderId]
-      );
-
-      res.json({
-        order: orderResult.rows[0],
-        items: itemsResult.rows,
-      });
-    } catch (err) {
-      console.error("查詢訂單明細失敗：", err);
-      res.status(500).json({ error: "伺服器錯誤" });
-    }
-  }
-);
-
-router.get("/ordersDetail/:orderId", authenticateToken, async (req, res) => {
-  const orderId = req.params.orderId;
-  const ownerId = req.query.owner_id; // 商家ID，必須從前端帶入且驗證
-
-  if (!ownerId) {
-    return res.status(400).json({ error: "缺少 owner_id" });
-  }
-
-  try {
-    // 1. 取得訂單主檔資料
-    const orderResult = await pool.query(
-      `SELECT order_id, name, phone, address, payment, total, date
-       FROM orders WHERE order_id = $1`,
-      [orderId]
-    );
-
-    if (orderResult.rowCount === 0) {
-      return res.status(404).json({ error: "訂單不存在" });
-    }
-
-    const order = orderResult.rows[0];
-
-    // 2. 取得該訂單中該商家擁有的商品明細
-    const itemsResult = await pool.query(
-      `SELECT p.name, oi.quantity, oi.price
-       FROM order_items oi
-       JOIN products p ON oi.product_id = p.product_id
-       WHERE oi.order_id = $1 AND p.owner_id = $2`,
-      [orderId, ownerId]
-    );
-
-    order.items = itemsResult.rows;
-
-    return res.json(order);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "伺服器錯誤" });
   }
 });
 
