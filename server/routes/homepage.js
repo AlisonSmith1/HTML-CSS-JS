@@ -6,6 +6,7 @@ router.get("/index", async (req, res) => {
     const result = await pool.query(
       "SELECT * FROM products ORDER BY created_at DESC"
     );
+    console.log(result);
     res.json(result.rows);
   } catch (err) {
     console.error(err);
