@@ -19,6 +19,8 @@ app.use(express.json()); // 確保能解析 JSON 請求
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
 
+app.use(express.static(path.join(__dirname, "../intro"))); // 或 client/public 等
+
 // ✅ 加入開場動畫首頁（Opening.html）→ 進入網址根目錄 /
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../intro/Opening.html"));
