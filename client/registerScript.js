@@ -32,7 +32,7 @@ form.addEventListener('submit', async (e) => {
     }
 
     console.log('註冊成功，導向登入頁');
-    window.location.href = '/app/login.html';
+    window.location.href = '/client/login.html';
   } catch (err) {
     console.error('註冊時發生錯誤：', err);
   }
