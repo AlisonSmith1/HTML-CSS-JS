@@ -199,18 +199,12 @@ async function checkLoginState() {
 
 document.getElementById("search-btn").addEventListener("click", async () => {
   const keyword = document.getElementById("search-input").value.trim();
-  const token = localStorage.getItem("token")?.replace("Bearer ", "");
 
   try {
     const res = await fetch(
-      `https://html-css-js-production.up.railway.app/api/commodity/search?keyword=${encodeURIComponent(
+      `https://html-css-js-production.up.railway.app/homepage/search?keyword=${encodeURIComponent(
         keyword
-      )}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      )}`
     );
     const results = await res.json();
 

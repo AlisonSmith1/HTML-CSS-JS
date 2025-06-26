@@ -13,6 +13,21 @@ router.get("/index", async (req, res) => {
   }
 });
 
+router.get("/search", async (req, res) => {
+  const { keyword } = req.query;
+
+  try {
+    const result = await pool.query(
+      `SELECT * FROM products WHERE name ILIKE $1 OR description ILIKE $1`,
+      [`%${keyword}%`]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("搜尋錯誤：", err);
+    res.status(500).json({ error: "伺服器錯誤" });
+  }
+});
+
 // products取得單一商品
 router.get("/:product_id", async (req, res) => {
   const { product_id } = req.params;
