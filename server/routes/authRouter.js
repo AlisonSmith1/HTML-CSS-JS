@@ -78,7 +78,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "3h", //這個 token 只能用 3 小時，3 小時後就會過期，需要重新登入產生新的 token
     }
   );
-
+  console.log("使用者登入成功，ID:", user.id);
   return res.json({
     message: "登入成功",
     token: "Bearer " + token,

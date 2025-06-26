@@ -80,12 +80,7 @@ function showNotification(message, type = "error") {
   }, 3000);
 }
 
-async function editProduct(productId) {
-  window.location.href = `/${app}/edit.html/${productId}`;
-}
-
 async function deleteProduct(productId) {
-  console.log(productId);
   const token = localStorage.getItem("token")?.replace("Bearer ", "");
   try {
     const res = await fetch(`${API_URL}/api/commodity/delete/${productId}`, {

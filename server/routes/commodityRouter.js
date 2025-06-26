@@ -465,12 +465,16 @@ router.patch("/reduceQuantity/:userId", authenticateToken, async (req, res) => {
 // 刪除商品
 router.delete("/delete/:productId", authenticateToken, async (req, res) => {
   const { productId } = req.params;
-
+  console.log(productId);
   try {
-    await pool.query("DELETE FROM products WHERE product_id = $1", [productId]);
-    res.json({ msg: "商品已刪除" });
+    const result = await pool.query(
+      "DELETE FROM products WHERE product_id = $1",
+      [productId]
+    );
+    console.log(result);
+    res.json({ msg: "商品已刪除", deleteProduct: result.rows[0] });
   } catch (err) {
-    console.error(err);
+    console.error(err); // 看這裡的錯誤訊息
     res.status(500).json({ error: "刪除商品失敗" });
   }
 });
@@ -491,7 +495,6 @@ router.delete(
         "DELETE FROM cart_items WHERE userid = $1",
         [userId]
       );
-      // console.log(`已刪除 ${result.rowCount} 筆資料`);
       res.json({ msg: "購物車商品已刪除", deletedCount: result.rowCount });
     } catch (err) {
       console.error(err);
