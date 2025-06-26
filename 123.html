@@ -4,33 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #items-list {
+        background-color: #fafafa;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(165, 91, 28, 0.05);
+      }
+      ul #items-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #items-list li {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+    </style>
   </head>
   <body>
-    <div id="order-content">
-      <h2>訂單編號：123456</h2>
-      <p>姓名：小明</p>
-      <p>地址：台北市信義區</p>
-      <p>付款方式：貨到付款</p>
-      <p>商品：T-shirt x2、褲子 x1</p>
-      <p>總金額：NT$1500</p>
+    <div id="items-list">
+      <ul>
+        2
+      </ul>
+
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
     </div>
 
-    <!-- 按鈕觸發列印 PDF -->
-    <button id="download-pdf">下載 PDF</button>
-    <script>
-      document.getElementById("download-pdf").addEventListener("click", () => {
-        const element = document.getElementById("order-content");
-        html2pdf()
-          .from(element)
-          .set({
-            margin: 1,
-            filename: "訂單.pdf",
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: "cm", format: "a4", orientation: "portrait" },
-          })
-          .save();
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script></script>
   </body>
 </html>
