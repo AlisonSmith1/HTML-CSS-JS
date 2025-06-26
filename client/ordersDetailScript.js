@@ -50,3 +50,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     alert("無法取得訂單詳情");
   }
 });
+
+document.getElementById("download-pdf").addEventListener("click", () => {
+  const element = document.getElementById("order-content");
+  html2pdf()
+    .from(element)
+    .set({
+      margin: 1,
+      filename: "訂單.pdf",
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "cm", format: "a4", orientation: "portrait" },
+    })
+    .save();
+});
