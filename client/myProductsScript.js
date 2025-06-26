@@ -54,7 +54,7 @@ async function fetchMyProducts(token) {
 
       card.querySelector(".edit-btn").addEventListener("click", () => {
         localStorage.setItem("productId", product.product_id);
-        window.location.href = `/client/edit.html?product_id=${product.product_id}`;
+        window.location.href = `/${app}/edit.html?product_id=${product.product_id}`;
       });
 
       card.querySelector(".delete-btn").addEventListener("click", () => {
@@ -81,7 +81,7 @@ function showNotification(message, type = "error") {
 }
 
 async function editProduct(productId) {
-  window.location.href = `/client/edit.html/${productId}`;
+  window.location.href = `/${app}/edit.html/${productId}`;
 }
 
 async function deleteProduct(productId) {
