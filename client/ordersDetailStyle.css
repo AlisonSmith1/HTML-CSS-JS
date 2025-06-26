@@ -46,7 +46,6 @@ ul#items-list {
   display: flex;
   align-items: center;
   padding: 12px;
-  margin-bottom: 12px;
 }
 
 #items-list strong {
