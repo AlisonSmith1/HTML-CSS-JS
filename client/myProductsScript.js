@@ -1,43 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const token = localStorage.getItem("token")?.replace("Bearer ", "");
+import { API_URL } from './service/auth.service.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('token')?.replace('Bearer ', '');
   fetchMyProducts(token);
 });
 
 async function fetchMyProducts(token) {
   try {
-    const res = await fetch(
-      `https://html-css-js-production.up.railway.app/api/commodity/my-products`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const res = await fetch(`${API_URL}/api/commodity/my-products`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     const products = await res.json();
 
     if (!res.ok) {
-      showNotification(products.error || "無法取得商品", "error");
+      showNotification(products.error || '無法取得商品', 'error');
       return;
     }
 
-    const container = document.getElementById("product-list");
-    container.innerHTML = "";
+    const container = document.getElementById('product-list');
+    container.innerHTML = '';
 
     if (products.length === 0) {
-      container.innerHTML = "<p>目前尚未上架商品。</p>";
+      container.innerHTML = '<p>目前尚未上架商品。</p>';
       return;
     }
 
     products.forEach((product) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.display = "flex";
-      card.style.alignItems = "center";
-      card.style.gap = "20px";
-      card.style.border = "1px solid #ccc";
-      card.style.padding = "10px";
-      card.style.marginBottom = "10px";
-      card.style.borderRadius = "8px";
-      card.style.backgroundColor = "#f9f9f9";
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.display = 'flex';
+      card.style.alignItems = 'center';
+      card.style.gap = '20px';
+      card.style.border = '1px solid #ccc';
+      card.style.padding = '10px';
+      card.style.marginBottom = '10px';
+      card.style.borderRadius = '8px';
+      card.style.backgroundColor = '#f9f9f9';
 
       card.innerHTML = `
     <img src="${product.image_url}" alt="${product.name}" width="120" height="120" style="object-fit: cover; border-radius: 4px;" />
@@ -52,31 +51,31 @@ async function fetchMyProducts(token) {
     </div>
   `;
 
-      card.querySelector(".edit-btn").addEventListener("click", () => {
-        localStorage.setItem("productId", product.product_id);
+      card.querySelector('.edit-btn').addEventListener('click', () => {
+        localStorage.setItem('productId', product.product_id);
         window.location.href = `/app/edit.html?product_id=${product.product_id}`;
       });
 
-      card.querySelector(".delete-btn").addEventListener("click", () => {
+      card.querySelector('.delete-btn').addEventListener('click', () => {
         deleteProduct(product.product_id);
       });
 
       container.appendChild(card);
     });
   } catch (err) {
-    console.error("取得我的商品失敗：", err);
-    showNotification("伺服器錯誤", "error");
+    console.error('取得我的商品失敗：', err);
+    showNotification('伺服器錯誤', 'error');
   }
 }
 
-function showNotification(message, type = "error") {
-  const notification = document.getElementById("notification");
+function showNotification(message, type = 'error') {
+  const notification = document.getElementById('notification');
   notification.textContent = message;
   notification.className = `notification ${type}`;
-  notification.style.display = "block";
+  notification.style.display = 'block';
 
   setTimeout(() => {
-    notification.style.display = "none";
+    notification.style.display = 'none';
   }, 3000);
 }
 
@@ -86,26 +85,23 @@ async function editProduct(productId) {
 
 async function deleteProduct(productId) {
   console.log(productId);
-  const token = localStorage.getItem("token")?.replace("Bearer ", "");
+  const token = localStorage.getItem('token')?.replace('Bearer ', '');
   try {
-    const res = await fetch(
-      `https://html-css-js-production.up.railway.app/api/commodity/delete/${productId}`,
-      {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const res = await fetch(`${API_URL}/api/commodity/delete/${productId}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+    });
 
     if (res.ok) {
-      showNotification("刪除成功", "success");
+      showNotification('刪除成功', 'success');
       location.reload();
     } else {
       const result = await res.json();
       console.log(result);
-      showNotification(result.error || "刪除失敗", "error");
+      showNotification(result.error || '刪除失敗', 'error');
     }
   } catch (err) {
-    console.error("刪除商品錯誤：", err);
-    showNotification("刪除錯誤", "error");
+    console.error('刪除商品錯誤：', err);
+    showNotification('刪除錯誤', 'error');
   }
 }
