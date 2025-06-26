@@ -77,6 +77,12 @@ async function setupImageUploadHandler() {
 
       console.log(`圖片尺寸為：${width} x ${height}`);
 
+      if (width > 218 || height > 218) {
+        alert("圖片尺寸過小，請上傳 218x218 以上的圖片");
+        document.getElementById("image").value = "";
+        return;
+      }
+
       if (width > 1024 || height > 1024) {
         alert("圖片尺寸過大，請上傳 1024x1024 以下的圖片");
         document.getElementById("image").value = "";
