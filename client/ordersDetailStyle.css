@@ -45,7 +45,6 @@ ul#items-list {
 #items-list li {
   display: flex;
   align-items: center;
-  padding: 12px;
 }
 
 #items-list strong {
