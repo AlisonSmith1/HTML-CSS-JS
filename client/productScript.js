@@ -22,6 +22,7 @@ async function fetchProduct() {
           <p>描述:${product.description}</p>
           <p>數量：${product.stock}</p>
           <p>分類：${product.category_id}</p>
+          <p>賣家:${product.owner_id}</p>
           <p><strong>NT$${product.price}</strong></p>
           <button id="add-to-cart-btn">加入購物車</button>
         `;
