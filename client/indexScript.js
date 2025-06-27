@@ -191,6 +191,7 @@ async function checkLoginState() {
   document.getElementById("logout-link")?.addEventListener("click", () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("productId");
     location.reload();
   });
 }
