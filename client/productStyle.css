@@ -8,12 +8,13 @@
 
 /* 整體背景與排版 */
 body {
-  background: #fffdfb;
-  padding: 40px 20px;
+  background-color: #fffaf5;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #3b2f2f;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  padding: 40px 20px;
 }
 
 #add-to-cart-btn {
@@ -113,4 +114,20 @@ body {
 .back-btn:hover {
   background-color: #c9782f;
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  #product-detail {
+    background-color: unset;
+    border: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    padding: 30px;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }

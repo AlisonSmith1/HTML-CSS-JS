@@ -9,17 +9,18 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Noto Sans TC', sans-serif;
+        font-family: "Noto Sans TC", sans-serif;
         color: #333;
       }
 
       body {
-        background-color: #f7f3f0;
-        padding: 40px 20px;
+        background-color: #fffaf5;
+        font-family: "Noto Sans TC", sans-serif;
+        color: #3b2f2f;
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 100vh;
+        padding: 40px 20px;
       }
 
       h1 {
@@ -30,12 +31,14 @@
       }
 
       form#order-form {
-        background: #fff;
-        padding: 25px 30px;
+        background-color: #fff;
+        border: 1.5px solid #ecd9c6;
         border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        width: 320px;
-        margin-bottom: 40px;
+        padding: 30px 25px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(165, 91, 28, 0.08);
+        margin-bottom: 35px;
       }
 
       form#order-form label {
@@ -45,8 +48,8 @@
         color: #6a584b;
       }
 
-      form#order-form input[type='text'],
-      form#order-form input[type='tel'],
+      form#order-form input[type="text"],
+      form#order-form input[type="tel"],
       form#order-form select {
         width: 100%;
         padding: 8px 12px;
@@ -57,8 +60,8 @@
         transition: border-color 0.3s ease;
       }
 
-      form#order-form input[type='text']:focus,
-      form#order-form input[type='tel']:focus,
+      form#order-form input[type="text"]:focus,
+      form#order-form input[type="tel"]:focus,
       form#order-form select:focus {
         outline: none;
         border-color: #ab7a5f;
@@ -90,7 +93,8 @@
         padding: 25px 30px;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        width: 320px;
+        max-width: 600px;
+        width: 100%;
       }
 
       #order-summary h2 {
@@ -122,6 +126,28 @@
         font-size: 1.2rem;
         color: #5a4e4d;
         text-align: right;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background-color: #fffaf5;
+          font-family: "Noto Sans TC", sans-serif;
+          color: #3b2f2f;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 30px 25px;
+        }
+        form {
+          background-color: unset;
+          border: unset;
+          border-radius: unset;
+          padding: 30px 25px;
+          max-width: 600px;
+          width: 100%;
+          box-shadow: unset;
+          height: auto;
+        }
       }
     </style>
   </head>

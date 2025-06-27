@@ -7,11 +7,11 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Noto Sans TC", sans-serif;
   background-color: #fffaf5;
   max-width: 700px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 40px 20px;
   border-radius: 6px;
   box-shadow: 0 3px 8px rgba(171, 122, 95, 0.3);
   line-height: 1.6;
@@ -77,4 +77,17 @@ ul#items-list {
 .back-btn:hover {
   background-color: #c9782f;
   transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  body {
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: #fffaf5;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px 20px;
+    border-radius: unset;
+    box-shadow: unset;
+    line-height: 1.6;
+  }
 }
