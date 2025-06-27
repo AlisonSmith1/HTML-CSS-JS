@@ -12,6 +12,7 @@ body {
 section {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
@@ -21,6 +22,11 @@ section {
   position: relative;
   z-index: 1;
   color: #7f4300;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.3em; /* 或直接設為 0 */
 }
 
 section.active {
@@ -116,4 +122,18 @@ section.active {
 
 #enterBtn:hover {
   background-color: #ce7004;
+}
+
+@media (max-width: 768px) {
+  #intro1 {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+  }
+  #intro2,
+  #intro3 {
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+  }
 }
