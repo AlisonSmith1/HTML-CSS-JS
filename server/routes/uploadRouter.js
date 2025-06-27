@@ -28,8 +28,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
   }
 
   const imageUrl = `/uploads/${req.file.filename}`;
-  res.json({ url: imageUrl });
-  console.log(imageUrl);
+  res.json({ msg: "圖片上傳成功", url: imageUrl });
 });
 
 module.exports = router;

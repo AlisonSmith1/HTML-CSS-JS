@@ -1,13 +1,6 @@
 import { API_URL } from "./service/auth.service.js";
 import { app } from "./service/app.service.js";
-
-function requireImage(file) {
-  if (!file) {
-    alert("請先選擇圖片");
-    return false;
-  }
-  return true;
-}
+let imageUrl = "";
 
 // 監聽表單送出
 async function setupProductFormHandler() {
@@ -75,15 +68,11 @@ async function setupImageUploadHandler() {
       const width = img.width;
       const height = img.height;
 
-      console.log(`圖片尺寸為：${width} x ${height}`);
-
-      if (width < 218 || height < 218) {
-        alert("圖片尺寸過小，請上傳 218x218 以上的圖片");
+      if (width < 236 || height < 236) {
+        alert("圖片尺寸過小，請上傳 236x236 以上的圖片");
         document.getElementById("image").value = "";
         return;
-      }
-
-      if (width > 1024 || height > 1024) {
+      } else if (width > 1024 || height > 1024) {
         alert("圖片尺寸過大，請上傳 1024x1024 以下的圖片");
         document.getElementById("image").value = "";
         return;
@@ -106,7 +95,7 @@ async function setupImageUploadHandler() {
 
         const result = await res.json();
 
-        imageUrl = `https://html-css-js-production.up.railway.app${result.url}`;
+        imageUrl = `${API_URL}${result.url}`;
         document.getElementById("image_url").value = imageUrl;
 
         const preview = document.getElementById("image-preview");
