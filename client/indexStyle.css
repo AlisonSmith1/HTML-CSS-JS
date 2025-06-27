@@ -188,45 +188,6 @@ body {
   background-color: #4caf50; /* 成功訊息用綠色 */
 }
 
-/* 手機版：寬度768px以下 */
-@media (max-width: 768px) {
-  #hamburger {
-    display: block; /* 顯示漢堡按鈕 */
-  }
-  #header-right.menu {
-    display: none; /* 手機版隱藏選單 */
-    flex-direction: column;
-    background-color: #f0d9b5;
-    position: absolute;
-    top: 60px; /* header底下 */
-    right: 20px;
-    width: 200px;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 10px rgba(171, 122, 95, 0.4);
-    z-index: 10;
-  }
-  #header-right.menu.active {
-    display: flex; /* 漢堡點擊後顯示選單 */
-  }
-  /* 手機版選單內連結改成直排 */
-
-  #header-right.menu button {
-    width: 100%;
-  }
-  #header-right.menu input {
-    width: 80%;
-    margin-bottom: 10px;
-  }
-  #header-right.menu a {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .card {
-    width: 100%;
-  }
-}
-
 .category-tabs {
   display: flex;
   justify-content: center;
@@ -306,4 +267,77 @@ body {
 
 .next {
   right: 10px;
+}
+
+/* 手機版：寬度768px以下 */
+@media (max-width: 768px) {
+  #hamburger {
+    display: block; /* 顯示漢堡按鈕 */
+  }
+  #header-right.menu {
+    display: none; /* 手機版隱藏選單 */
+    flex-direction: column;
+    background-color: #f0d9b5;
+    position: absolute;
+    top: 60px; /* header底下 */
+    right: 20px;
+    width: 200px;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(171, 122, 95, 0.4);
+    z-index: 10;
+  }
+  #header-right.menu.active {
+    display: flex; /* 漢堡點擊後顯示選單 */
+  }
+  /* 手機版選單內連結改成直排 */
+
+  #header-right.menu button {
+    width: 100%;
+  }
+  #header-right.menu input {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+  #header-right.menu a {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .card {
+    width: 100%;
+  }
+
+  #search-right {
+    display: flex;
+  }
+
+  .category-btn {
+    padding: 14px;
+    margin-bottom: 10px;
+    background-color: #d2995a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  #search-right {
+    display: flex;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  #middle {
+    margin-top: 10px;
+  }
 }
