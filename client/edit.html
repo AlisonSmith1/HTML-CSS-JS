@@ -6,54 +6,67 @@
     <title>編輯商品</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f9f5f0;
-        color: #333;
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #fff;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #fffaf5;
+        font-family: "Noto Sans TC", sans-serif;
+        color: #3b2f2f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
       }
 
       h1 {
-        text-align: center;
-        color: #5d4037;
+        color: #5a4e4d;
+        margin-bottom: 20px;
       }
 
       form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        background-color: #fff;
+        border: 1.5px solid #ecd9c6;
+        border-radius: 10px;
+        padding: 30px 25px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(165, 91, 28, 0.08);
       }
 
       label {
         display: flex;
         flex-direction: column;
-        font-weight: bold;
+        font-weight: 600;
+        color: #5a4e4d;
+      }
+
+      .btn-group,
+      #edit-btn {
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
 
       input,
       select {
         padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
+        border: 1.5px solid #d8a76f;
         border-radius: 6px;
+        font-size: 1rem;
+        background-color: #fff;
+        transition: border-color 0.3s ease;
       }
 
       button {
-        background-color: #8d6e63;
-        color: white;
-        padding: 10px;
+        padding: 10px 20px;
         border: none;
+        background-color: #d2995a;
+        color: white;
+        font-weight: 600;
         border-radius: 6px;
-        font-size: 16px;
         cursor: pointer;
+        box-shadow: 0 3px 6px rgba(210, 153, 90, 0.3);
+        transition: background-color 0.3s ease;
       }
 
       button:hover {
-        background-color: #6d4c41;
+        background-color: #a55b1c;
       }
 
       a {
@@ -67,15 +80,37 @@
       a:hover {
         text-decoration: underline;
       }
+
+      @media (max-width: 768px) {
+        body {
+          background-color: #fffaf5;
+          font-family: "Noto Sans TC", sans-serif;
+          color: #3b2f2f;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 30px 25px;
+        }
+        form {
+          background-color: unset;
+          border: unset;
+          border-radius: unset;
+          padding: 30px 25px;
+          max-width: 600px;
+          width: 100%;
+          box-shadow: unset;
+          height: auto;
+        }
+      }
     </style>
   </head>
   <body>
     <h1>編輯商品</h1>
     <div id="notification"></div>
     <form id="edit-product-form">
-      <label>商品名稱:<input type="text" id="name" /></label>
-      <label>價格:<input type="number" id="price" min="0" /></label>
-      <label>描述:<input type="text" id="description" /></label>
+      <label>商品名稱<input type="text" id="name" /></label>
+      <label>價格<input type="number" id="price" min="0" /></label>
+      <label>描述<input type="text" id="description" /></label>
 
       <label>
         <span>商品圖片</span>
