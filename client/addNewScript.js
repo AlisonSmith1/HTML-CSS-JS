@@ -58,7 +58,7 @@ async function setupImageUploadHandler() {
     const input = document.getElementById("image");
     const file = input.files[0];
 
-    if (!file.type.startsWith("image/")) {
+    if (!file) {
       alert("請上傳圖片檔案");
       return;
     }
