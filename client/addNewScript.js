@@ -43,6 +43,9 @@ async function setupProductFormHandler() {
           imageUrl = "";
           document.getElementById("image-preview").style.display = "none";
           window.location.href = `/${app}/index.html`;
+        } else if (!imageUrl) {
+          alert("請上傳圖片檔案");
+          return;
         } else {
           alert("新增失敗：" + data.message);
         }
