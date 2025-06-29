@@ -17,6 +17,10 @@ body {
   padding: 40px 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 #add-to-cart-btn {
   margin-top: 10px;
   background-color: #d2995a; /* 按鈕色 */

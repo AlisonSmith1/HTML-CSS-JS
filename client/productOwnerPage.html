@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #fffaf5;
+        color: #5a3e1b;
+      }
+
+      .seller-profile {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .seller-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border-bottom: 2px solid #ecd9c6;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .seller-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ecd9c6;
+      }
+
+      .seller-name {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .seller-bio {
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        border: 1px solid #ecd9c6;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(165, 91, 28, 0.1);
+        transition: transform 0.2s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .product-title {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .product-price {
+        color: #7f4300;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="seller-profile">
+      <div class="seller-header">
+        <img
+          src="https://i.pravatar.cc/100"
+          alt="賣家頭像"
+          class="seller-avatar"
+        />
+        <div class="seller-name">小布店鋪</div>
+      </div>
+
+      <div class="seller-bio">
+        歡迎來到我的二手衣物專區！這裡販售各式風格二手女裝，所有商品皆已清洗消毒，歡迎有緣人帶回家～
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://picsum.photos/200/180?1" class="product-image" />
+          <div class="product-title">碎花洋裝</div>
+          <div class="product-price">NT$350</div>
+        </div>
+        <div class="product-card">
+          <img src="https://picsum.photos/200/180?2" class="product-image" />
+          <div class="product-title">格紋襯衫</div>
+          <div class="product-price">NT$250</div>
+        </div>
+        <div class="product-card">
+          <img src="https://picsum.photos/200/180?3" class="product-image" />
+          <div class="product-title">牛仔長褲</div>
+          <div class="product-price">NT$400</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
