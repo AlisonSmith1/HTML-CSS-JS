@@ -97,7 +97,7 @@ async function setupImageUploadHandler() {
 
         const result = await res.json();
         console.log("上傳成功：", result);
-        imageUrl = result.secure_url;
+        imageUrl = result;
 
         console.log(imageUrl);
         document.getElementById("image_url").value = imageUrl;
