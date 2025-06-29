@@ -16,10 +16,5 @@
   "bugs": {
     "url": "https://github.com/AlisonSmith1/HTML-CSS-JS/issues"
   },
-  "homepage": "https://github.com/AlisonSmith1/HTML-CSS-JS#readme",
-  "dependencies": {
-    "cloudinary": "^2.7.0",
-    "dotenv": "^17.0.0",
-    "env": "^0.0.2"
-  }
+  "homepage": "https://github.com/AlisonSmith1/HTML-CSS-JS#readme"
 }
