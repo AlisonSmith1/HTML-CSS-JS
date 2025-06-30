@@ -226,7 +226,7 @@ document.getElementById("search-btn").addEventListener("click", async () => {
 
   try {
     const res = await fetch(
-      `${API_URL}/api/commodity/search?keyword=${encodeURIComponent(keyword)}`
+      `${API_URL}/homepage/search?keyword=${encodeURIComponent(keyword)}`
     );
     const results = await res.json();
 
