@@ -179,6 +179,20 @@ function checkPostAnchorState() {
   }
 }
 
+function checkPurchasRecordState() {
+  const purchasRecord = document.getElementById("purchas-record");
+  if (!purchasRecord) return;
+
+  purchasRecord.addEventListener("click", () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      showNotification("請先登入才能查看購物車", "error");
+      return;
+    }
+    window.location.href = `/${app}/purchaseRecord.html`;
+  });
+}
+
 function checkMyProductsState() {
   const myProductLink = document.getElementById("my-products-link");
   if (!myProductLink) return;
@@ -267,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.classList.toggle("active");
   });
 
+  checkPurchasRecordState();
   checkPostAnchorState();
   checkMyProductsState();
   checkCartBtnState(); // 儘早綁定事件
