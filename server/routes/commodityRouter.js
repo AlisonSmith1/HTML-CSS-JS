@@ -19,7 +19,7 @@ router.get("/search", authenticateToken, async (req, res) => {
 
 // GET /api/orders/search?keyword=abc
 router.get("/searchPurchaseRecord", authenticateToken, async (req, res) => {
-  const keyword = req.query.keyword.toLowerCase();
+  const keyword = req.query.keyword;
   const userId = req.query.userId;
 
   try {

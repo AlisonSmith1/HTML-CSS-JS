@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .underline-expand {
+        position: relative;
+        display: inline-block; /* 讓元素寬度包裹文字 */
+      }
+
+      .underline-expand::before {
+        content: "";
+        position: absolute;
+        top: 0; /* 線在文字頂部 */
+        left: 50%; /* 從中間開始 */
+        width: 0;
+        height: 2px; /* 線高 */
+        background-color: black;
+        transition: width 0.3s ease, left 0.3s ease;
+        transform-origin: center;
+      }
+
+      .underline-expand:hover::before {
+        width: 100%; /* 展開到整個元素寬度 */
+        left: 0; /* 從最左側開始 */
+      }
+    </style>
   </head>
   <body>
-    <img
-      src="https://res.cloudinary.com/dypvpr2uu/image/upload/v1751207171/smdydk0xvfiwxpmgvcnm.png"
-    />
+    <p class="underline-expand">這是一行文字</p>
   </body>
 </html>

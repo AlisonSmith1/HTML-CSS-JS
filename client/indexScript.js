@@ -223,16 +223,10 @@ async function checkLoginState() {
 
 document.getElementById("search-btn").addEventListener("click", async () => {
   const keyword = document.getElementById("search-input").value.trim();
-  const token = localStorage.getItem("token")?.replace("Bearer ", "");
 
   try {
     const res = await fetch(
-      `${API_URL}/api/commodity/search?keyword=${encodeURIComponent(keyword)}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      `${API_URL}/api/commodity/search?keyword=${encodeURIComponent(keyword)}`
     );
     const results = await res.json();
 
