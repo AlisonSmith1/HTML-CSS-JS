@@ -164,29 +164,40 @@ function checkPostAnchorState() {
   const addProductLink = document.getElementById("add-product-link");
   if (!addProductLink) return;
 
-  addProductLink.addEventListener("click", function (e) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      showNotification("請先登入才能新增商品", "error");
-      return;
-    }
-    window.location.href = `/${app}/addNew.html`;
-  });
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user) {
+    addProductLink.style.display = "inline";
+    addProductLink.addEventListener("click", function (e) {
+      window.location.href = `/${app}/addNew.html`;
+    });
+  } else {
+    addProductLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      showNotification("請先登入才能查看商品", "error");
+    });
+  }
 }
 
 function checkMyProductsState() {
   const myProductLink = document.getElementById("my-products-link");
   if (!myProductLink) return;
 
-  myProductLink.addEventListener("click", function (e) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user) {
+    myProductLink.style.display = "inline";
+    myProductLink.addEventListener("click", function (e) {
+      window.location.href = `/${app}/myProducts.html`;
+    });
+  } else {
+    myProductLink.addEventListener("click", function (e) {
+      e.preventDefault();
       showNotification("請先登入才能查看商品", "error");
-      return;
-    }
-    window.location.href = `/${app}/myProducts.html`;
-  });
+    });
+  }
 }
+
 async function checkLoginState() {
   document.getElementById("logout-link")?.addEventListener("click", () => {
     localStorage.removeItem("token");

@@ -269,6 +269,11 @@ body {
   right: 10px;
 }
 
+#my-products-link,
+#add-product-link {
+  display: none;
+}
+
 /* 手機版：寬度768px以下 */
 @media (max-width: 768px) {
   #hamburger {
