@@ -56,7 +56,7 @@ function renderCart() {
     tbody.appendChild(row);
   });
 
-  totalAmountEl.textContent = total;
+  totalAmountEl.textContent = `總金額:NT${total}`;
 
   //刪除;
   document.querySelectorAll(".remove-btn").forEach((btn) => {
