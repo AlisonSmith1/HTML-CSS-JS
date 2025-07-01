@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../intro/Opening.html"));
 });
 
-app.use(express.static(path.join(__dirname, "../client/public"))); // 裡面要有 robots.txt
+app.use(express.static(path.join(__dirname, "../client"))); // 裡面要有 robots.txt
 
 // ✅ 提供前端應用（如 client/index.html）
 app.use("/app", express.static(path.join(__dirname, "../client")));
