@@ -19,14 +19,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public"))); // 讓 /uploads 可被存取
 
 app.use(express.static(path.join(__dirname, "../intro"))); // 或 client/public 等
-// ✅ 加入開場動畫首頁（Opening.html）→ 進入網址根目錄 /
+// 加入開場動畫首頁（Opening.html）→ 進入網址根目錄 /
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../intro/Opening.html"));
 });
 
 app.use(express.static(path.join(__dirname, "../client"))); // 裡面要有 robots.txt
 
-// ✅ 提供前端應用（如 client/index.html）
+// 提供前端應用（如 client/index.html）
 app.use("/app", express.static(path.join(__dirname, "../client")));
 app.get("/app", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/index.html"));

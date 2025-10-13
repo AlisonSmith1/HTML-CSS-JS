@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
-const pool = require("../db"); // 假設你是這樣引入 PostgreSQL pool
+const pool = require("../db"); // 假設是這樣引入 PostgreSQL pool
 require("dotenv").config({ path: "../.env" });
 const jwt = require("jsonwebtoken");
 

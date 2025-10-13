@@ -1,56 +1,90 @@
-# 交易平台
+"# 交易平台"
 
-本專案為一套具備註冊、登入、購物車、購買紀錄與商家商品管理功能的線上交易平台。後端以 Node.js（JavaScript）搭配 Express 建立 RESTful API，資料持久化使用 PostgreSQL，共設計五張資料表（使用者、商品、訂單、訂單項目、購物車項目），實作基本資料關聯與查詢。前端採用 HTML、CSS 與原生 JavaScript 實現商品瀏覽與互動操作，完整呈現使用者從瀏覽到下單的交易流程，展現前後端整合與資料建模能力。
+前端 (HTML / CSS / JavaScript)
+────────────────────────────────────
 
-🔗 [線上展示](https://html-css-js-production.up.railway.app/)
-![GitHub](https://github.com/AlisonSmith1/HTML-CSS-JS.git)
+1. 首頁 / 商品列表
 
-# E-Commerce System
+   - 顯示商品縮圖、名稱、價格
+   - 搜尋商品欄（搜尋已上架商品）
+   - 註冊頁
+   - 輸入帳號密碼 → POST /register
 
-一個模擬電商網站的專案，包含 **買家購物流程** 與 **賣家管理流程**。  
-此專案旨在展示 **前端架構設計**、**購物流程** 與 **系統思維**，可作為面試作品或學習案例。
+2. 登入頁
 
----
+   - 輸入帳號密碼 → POST /login
+   - 成功後取得 Session / Cookie
 
-## 功能架構
+3. 商品詳細頁
 
-### 🔹 共用功能
+   - 顯示商品圖片、描述、價格、庫存
+   - 加入購物車 → 更新 localStorage / 後端購物車資料
 
-- 登入 / 登出 / 註冊
-- 商品搜尋欄（搜尋已上架商品）
-- 主頁、商品列表
+4. 購物車頁
 
-### 買家流程
+   - 顯示加入的商品清單
+   - 調整數量 / 移除商品
+   - 計算總金額
+   - 訂單流程
+   - 填寫收件人資訊與付款方式 → POST /orders
+   - 訂單確認 → 訂單成立
+   - 訂單完成頁（感謝頁）
 
-1. 瀏覽商品列表
-2. 查看商品詳細頁面
-3. 加入購物車
-4. 填寫收件人資訊、付款方式
-5. 訂單確認
-6. 訂單成立
-7. 訂單完成頁（感謝頁）
-8. 查詢購買紀錄
+5. 查詢購買紀錄 → GET /orders
 
-### 賣家流程
+6. 賣家商品管理
 
-1. 我的商品管理
-2. 新增商品
-3. 編輯 / 刪除商品
-4. 查看買家下單紀錄
+   - 我的商品管理頁
+   - 新增 / 編輯 / 刪除商品 → POST / PUT / DELETE /products
 
----
+7. 查看買家下單紀錄 → GET /orders
 
-## 系統架構
+────────────────────────────────────
 
-買家流程: 商品列表 → 商品詳細頁 → 購物車 → 填寫資訊 → 訂單確認 → 訂單成立 → 感謝頁 → 購買紀錄
+後端 (Node.js + Express)
+────────────────────────────────────
 
-賣家流程: 我的商品 → 新增/編輯/刪除 → 查看買家下單紀錄
+1. HTTP Route
+   - POST /register
+     - 建立新使用者 → 資料存 users 資料表
+   - POST /login
+     - 驗證帳號密碼 → 成功後回傳 Session / Cookie
+   - GET /products
+     - 取得商品列表
+   - GET /products/:id
+     - 取得單一商品資料
+   - POST /cart
+     - 加入購物車
+   - PUT /cart/:id
+     - 更新購物車數量
+   - DELETE /cart/:id
+     - 移除購物車項目
+   - POST /orders
+     - 建立訂單
+   - GET /orders
+     - 查詢使用者訂單紀錄
+   - GET /orders/:id
+     - 查詢單筆訂單詳情
+   - POST /products (賣家)
+     - 新增商品
+   - PUT /products/:id (賣家)
+     - 編輯商品
+   - DELETE /products/:id (賣家) -刪除商品
 
-共用功能: 登入 / 註冊 / 登出 / 商品搜尋
+────────────────────────────────────
 
-## 技術
+資料庫 (PostgreSQL)
+────────────────────────────────────
 
-- 前端：HTML / CSS / JavaScript
-- 後端：Node.js + Express
-- 資料庫：PostgreSQL
-- 部署：Railway
+- users
+  - id, username, password(hashed), email, created_at
+- products
+  - id, name, description, price, stock, image_url, created_at
+- orders
+  - id, user_id, total_price, status, created_at
+- order_items
+  - id, order_id, product_id, quantity, price
+- cart_items
+  - id, user_id, product_id, quantity, created_at
+
+────────────────────────────────────
